@@ -1,24 +1,29 @@
 html, body {
     height: 100%;
+    margin: 0px;
 }
 
 .header {
-    overflow: hidden;
+    overflow: auto;
     height: 300px;
+    background-image: url("resources/dark-wood.png");
+    background-color: black;
+    color: white;
 }
 
 .header img {
     float: left;
+    margin-left: 25px;
     height: 300px;
     width: 300px;
 }
 
-.header h1,
-.header h2{
+.header h1 {
+    font-size: 36px;
+    margin-left: 50px;
     padding-top: 100px;
 }
 
-.header h1:hover,
 .header a:hover {
     top: -10px;
     text-decoration: underline;
@@ -27,9 +32,23 @@ html, body {
 .header * {
     text-decoration: none;
     position: relative;
-    width: min-content;
-    height: fit-content;
     margin: 10px;
     display: inline-block;
     text-align: center;
+}
+
+.header-row {
+    width: max-content;
+    margin-left: 25px;
+    overflow: hidden;
+}
+
+.header-row * { 
+    width: min-content;
+    height: fit-content;
+    color: lavender;
+}
+
+.content {
+    border: 50px;
 }
