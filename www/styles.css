@@ -4,7 +4,6 @@ html, body {
 }
 
 .header {
-    overflow: auto;
     height: 300px;
     background-image: url("resources/dark-wood.png");
     background-color: black;
@@ -19,9 +18,9 @@ html, body {
 }
 
 .header h1 {
-    font-size: 36px;
+    font-size: 45px;
     margin-left: 50px;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .header a:hover {
@@ -33,7 +32,7 @@ html, body {
     text-decoration: none;
     position: relative;
     margin: 10px;
-    display: inline-block;
+    /* display: inline-block; */
     text-align: center;
 }
 
@@ -44,6 +43,7 @@ html, body {
 }
 
 .header-row * { 
+    display: inline-block;
     width: min-content;
     height: fit-content;
     color: lavender;
