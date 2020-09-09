@@ -1,8 +1,5 @@
 var view;
-require([
-    "esri/WebMap",
-    "esri/views/MapView"
-  ], function(WebMap, MapView) {
+require(["esri/WebMap","esri/views/MapView","esri/widgets/Legend","esri/widgets/ScaleBar"], function(WebMap, MapView, Legend, ScaleBar) {
  
     var bcMap = new WebMap({
         portalItem: {
@@ -18,4 +15,16 @@ require([
         zoom: 9
       });
 
+      var legend = new Legend({
+        view: view
+      });
+
+      var scalebar = new ScaleBar({
+        view: view
+      });
+
+      view.when(function() {
+        view.ui.add(legend, "top-right");
+        view.ui.add(scalebar, "bottom-left");
+      });
 });
