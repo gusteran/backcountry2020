@@ -57,9 +57,17 @@ html, body {
 }
 
 .content {
+    margin: 50px;
     border: 50px;
-    color: brown;
+    color: black;
+}
 
+.content h2 {
+    font-size: 36px;
+}
+
+.content p {
+    font-size: 18px;
 }
 
 .page-logo {
@@ -80,5 +88,30 @@ html, body {
 .page-logo h2 {
     font-size: 32px;
     color: darkred;
+    margin: 0px;
+}
+
+.person {
+    vertical-align: text-top;
+    text-decoration: underline;
+    text-align: center;
+    width: 200px;
+    /* height: 250px; */
+    margin: 10px;
+
+}
+
+.person img {
+    height: 200px;
+    width: 200px;
+    border-radius: 200px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: grey;
+}
+
+.person h2 {
+    font-size: 32px;
+    color: black;
     margin: 0px;
 }
