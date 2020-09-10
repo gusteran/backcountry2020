@@ -57,9 +57,17 @@ html, body {
 }
 
 .content {
+    margin: 50px;
     border: 50px;
-    color: brown;
+    color: black;
+}
 
+.content h2 {
+    font-size: 36px;
+}
+
+.content p {
+    font-size: 16px;
 }
 
 .page-logo {
