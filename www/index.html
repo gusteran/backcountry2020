@@ -3,8 +3,9 @@
     <head>
         <title>GNP Backcountry Planning</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="checklist.js"></script>
     </head>
-    <body>
+    <body onload="updateChecklist();">
         <div class="header landing">
             <img src="resources/glacier_logo.png">
             <h1>Glacier Backcountry Trip Planning</h1>
@@ -32,6 +33,32 @@
                     <h2>About Us</h2>
                 </a>
             </div>
+        </div>
+        <div>
+            <form class="checklist">
+                <label class="container">Backcountry Planning<input type="checkbox"><span class="checkmark"></span></label>
+                <ul>
+                    <li><label class="container">Glacier National Park Information Specifics<input type="checkbox"><span class="checkmark"></span></label></li>
+                    <li><label class="container">Rules and Regulations<input type="checkbox"><span class="checkmark"></span></label></li>
+                    <li><label class="container">Permitting<input type="checkbox"><span class="checkmark"></span></label></li>
+                    <li><label class="container">Safety<input type="checkbox"><span class="checkmark"></span></label></li>
+                </ul>
+                <label class="container">Backpacking Preparation<input type="checkbox"><span class="checkmark"></span></label>
+                <ul>
+                    <li><label class="container">Check Packing List<input type="checkbox"><span class="checkmark"></span></label></li>
+                    <li><label class="container">?<input type="checkbox"><span class="checkmark"></span></label></li>
+                </ul>
+                <label class="container">Interact with Map<input type="checkbox"><span class="checkmark"></span></label>
+                <ul>
+                    <li><label class="container">Check out the Map<input id="mapOpened" type="checkbox"><span class="checkmark"></span></label></li>
+                    <li><label class="container">Add your trip<input type="checkbox"><span class="checkmark"></span></label></li>
+                    <li><label class="container">View mileage and elevation statistics<input type="checkbox"><span class="checkmark"></span></label></li>
+                </ul>
+                <label class="container"><input type="checkbox"><span class="checkmark"></span></label>
+                <ul>
+                    <li></li>
+                </ul>
+            </form>
         </div>
     </body>
 </html>
