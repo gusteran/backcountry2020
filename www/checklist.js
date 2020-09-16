@@ -1,22 +1,42 @@
+const checklistDataIDs = [
+  "checkPlanning",
+  "checkRules",
+  "checkPermitting",
+  "checkSafety",
+  "checkPreparation",
+  "checkPacking",
+  "CHECK_TEST_PLEASE_UPDATE",
+  "checkMap",
+  "checkMapOpened",
+  "checkAddTrip",
+  "checkStatistics",
+];
 
-function updateChecklist(){
-    if(localStorage.getItem("mapOpened") == null) {
-        initData();
-    }
-    var mapOpened = localStorage.getItem("mapOpened");
-    console.log(mapOpened);
-    document.getElementById("mapOpened").checked  = (mapOpened === "true");
-    console.log(document.getElementById("mapOpened").checked);
+function updateChecklist() {
+  if (localStorage.getItem(checklistDataIDs[checklistDataIDs.length - 1]) == null) {
+    initData();
+  }
+  checklistDataIDs.forEach((id) => {
+    document.getElementById(id).checked = localStorage.getItem(id) === "true";
+  });
 }
 
-function initData(){
-    localStorage.setItem("mapOpened", "false");
+function updateChecklistDatabase() {
+  checklistDataIDs.forEach((id) => {
+    localStorage.setItem(id, document.getElementById(id).checked.toString());
+  });
 }
 
-function setTrue(name){
-    localStorage.setItem(name, "true");
+function initData() {
+  checklistDataIDs.forEach((id) => {
+    localStorage.setItem(id, "false");
+  });
 }
 
-function setFalse(name){
-    localStorage.setItem(name, "false");
+function setTrue(name) {
+  localStorage.setItem(name, "true");
+}
+
+function setFalse(name) {
+  localStorage.setItem(name, "false");
 }
