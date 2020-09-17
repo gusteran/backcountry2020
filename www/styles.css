@@ -133,12 +133,11 @@ body {
 }
 
 .checklist {
+    text-align: left;
     font-size: 28px;
     background-color: white;
     width: fit-content;
-    margin-left: 15%;
-    margin-right: auto;
-    margin-top: 50px;
+    margin: 50px 10px; 
     display: inline-block;
     padding: 28px;
     border-radius: 20px;
@@ -174,8 +173,8 @@ body {
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 1px;
+    left: 0px;
     height: 25px;
     width: 25px;
     background-color: #eee;

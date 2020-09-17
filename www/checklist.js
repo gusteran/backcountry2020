@@ -1,15 +1,18 @@
 const checklistDataIDs = [
   "checkPlanning",
   "checkRules",
-  "checkPermitting",
+  "checkPlanning",
+  "checkApplyForPermit",
   "checkSafety",
-  "checkPreparation",
   "checkPacking",
-  "CHECK_TEST_PLEASE_UPDATE",
+  "checkGNPUpdates",
   "checkMap",
   "checkMapOpened",
   "checkAddTrip",
   "checkStatistics",
+  "checkGNPUpdates",
+  "checkHikeSafe",
+  "checkMultiplePlans"
 ];
 
 function updateChecklist() {
