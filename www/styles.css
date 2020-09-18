@@ -4,7 +4,7 @@ body {
     width: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: lightgray;
+    background-color: #e0d9de;
     position: relative;
 }
 
@@ -91,9 +91,21 @@ body {
     font-size: 30px;
 }
 
-.content p {
+.content p,
+.content pre,
+.content li {
     font-size: 18px;
     color: black;
+}
+
+.text_box {
+    text-align: left;
+    max-width: 1040px;
+    display: inline-block;
+}
+
+.text_box * {
+    margin: 10px;
 }
 
 .page-logo {
@@ -144,7 +156,7 @@ body {
 
 .card_holder {
     overflow: hidden;
-    height: fit-content;
+    /* height: 300px; */
     margin: 0px;
 }
 
@@ -153,9 +165,9 @@ body {
     width: 500px;
     height: 300px;
     margin: 20px;
-    /* border-style: double;
-    border-radius: 20px;
-    border-width: 2px;
+    border-style: double;
+    border-width: 0px 2px;
+    /* border-radius: 20px;
     border-color: black;
     background-color: white; */
 }
@@ -185,7 +197,7 @@ body {
     overflow: auto;
     display: inline-block;
     max-width: 500px;
-    height: 500px;
+    min-height: 500px;
     margin: 20px;
     /* border-style: double;
     border-radius: 20px;
@@ -206,6 +218,33 @@ body {
 
 .image_card p {
     margin: 10px
+}
+
+.text_card {
+    /* overflow: auto; */
+    display: inline-block;
+    text-align: left;
+    width: 500px;
+    min-height: 300px;
+    margin: 20px;
+    border-style: double;
+    border-width: 0px 2px;
+    /* border-radius: 20px;
+    border-color: black;
+    background-color: white; */
+}
+
+.text_card ul,
+.text_card ol,
+.image_card ul{
+    text-align: left;
+    max-width: 500px;
+    margin: 5px 1px;
+    float: left;
+}
+
+.text_card h3 {
+    text-align: center;
 }
 .checklist {
     text-align: left;
