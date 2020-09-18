@@ -4,7 +4,7 @@ body {
     width: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: lightgray;
+    background-color: #e0d9de;
     position: relative;
 }
 
@@ -197,7 +197,7 @@ body {
     overflow: auto;
     display: inline-block;
     max-width: 500px;
-    height: 500px;
+    min-height: 500px;
     margin: 20px;
     /* border-style: double;
     border-radius: 20px;
@@ -235,7 +235,9 @@ body {
 }
 
 .text_card ul,
-.text_card ol{
+.text_card ol,
+.image_card ul{
+    text-align: left;
     max-width: 500px;
     margin: 5px 1px;
     float: left;
