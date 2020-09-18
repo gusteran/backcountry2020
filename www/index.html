@@ -1,37 +1,121 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <title>GNP Backcountry Planning</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="header landing">
-            <img src="resources/glacier_logo.png">
-            <h1>Glacier Backcountry Trip Planning</h1>
+<html>
+
+<head>
+    <title>GNP Backcountry Planning</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="checklist.js"></script>
+</head>
+
+<body onload="updateChecklist();">
+    <div class="header landing">
+        <img src="resources/glacier_logo.png" />
+        <h1>Glacier Backcountry Trip Planning</h1>
+    </div>
+    <div style="text-align: center; clear: both">
+        <div class="header-row">
+            <a href="other-page.html" class="page-logo">
+                <img src="resources/planning.jpg" />
+                <h2>Trip Planning</h2>
+            </a>
+            <a href="other-page.html" class="page-logo">
+                <img src="resources/backpacking.jpg" />
+                <h2>Backpacking Preparation</h2>
+            </a>
+            <a href="other-page.html" class="page-logo">
+                <img src="resources/safety.jpg" />
+                <h2>Safety</h2>
+            </a>
+            <a href="webMap.html" class="page-logo">
+                <img src="resources/map.jpg" />
+                <h2>Maps</h2>
+            </a>
+            <a href="about_us.html" class="page-logo">
+                <img src="resources/map.jpg" />
+                <h2>About Us</h2>
+            </a>
         </div>
-        <div style="text-align: center; clear: both;">
-            <div class="header-row">
-                <a href="other-page.html" class="page-logo">
-                    <img src="resources/planning.jpg">
-                    <h2>Trip Planning</h2>
-                </a>
-                <a href="other-page.html" class="page-logo">
-                    <img src="resources/backpacking.jpg">
-                    <h2>Backpacking Preparation</h2>
-                </a>
-                <a href="other-page.html" class="page-logo">
-                    <img src="resources/safety.jpg">
-                    <h2>Safety</h2>
-                </a>
-                <a href="webMap.html" class="page-logo">
-                    <img src="resources/map.jpg">
-                    <h2>Maps</h2>
-                </a>
-                <a href="about_us.html" class="page-logo">
-                    <img src="resources/map.jpg">
-                    <h2>About Us</h2>
-                </a>
-            </div>
+        <div>
+            <form onchange="updateChecklistDatabase()" class="checklist">
+                <label class="container">Backcountry Planning<input id="checkPlanning" type="checkbox" /><span
+                        class="checkmark"></span></label>
+                <ul>
+                    <li>
+                        <label class="container">Review the Rules and Regulations<input id="checkRules"
+                                type="checkbox" /><span class="checkmark"></span></label>
+                    </li>
+                    <li>
+                        <label class="container">Create multiple plans for your permit
+                            <input id="checkMultiplePlans" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="container">Apply for an advanced permit
+                            <input id="checkApplyForPermit" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                </ul>
+                <label class="container">Safety
+                    <input id="checkSafety" type="checkbox" />
+                    <span class="checkmark"></span>
+                </label>
+                <ul>
+                    <li>
+                        <label class="container">Check Your Packing List
+                            <input id="checkPacking" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="container">Check for any Updates from GNP
+                            <input id="checkGNPUpdates" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="container">Review the Hike Safe Page
+                            <input id="checkHikeSafe" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                </ul>
+                <label class="container">Interact with Map
+                    <input id="checkMap" type="checkbox" />
+                    <span class="checkmark"></span>
+                </label>
+                <ul>
+                    <li>
+                        <label class="container">Check out the Map
+                            <input id="checkMapOpened" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="container">Add your trip
+                            <input id="checkAddTrip" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="container">View mileage and elevation statistics
+                            <input id="checkStatistics" type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                </ul>
+                <!-- This is the format to add more -->
+                <!-- <label class="container">
+                <input id="" type="checkbox" />
+                <span class="checkmark"></span>
+            </label>
+            <ul>
+            <li></li>
+            </ul> -->
+            </form>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
