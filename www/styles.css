@@ -75,15 +75,25 @@ body {
 .content {
     margin: 50px;
     border: 50px;
-    color: black;
+    color: rebeccapurple;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 48px;
 }
 
 .content h2 {
     font-size: 36px;
 }
 
+.content h3 {
+    font-size: 30px;
+}
+
 .content p {
     font-size: 18px;
+    color: black;
 }
 
 .page-logo {
@@ -132,6 +142,71 @@ body {
     margin: 0px;
 }
 
+.card_holder {
+    overflow: hidden;
+    height: fit-content;
+    margin: 0px;
+}
+
+.card {
+    display: inline-block;
+    width: 500px;
+    height: 300px;
+    margin: 20px;
+    /* border-style: double;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: black;
+    background-color: white; */
+}
+
+.card img {
+    width: 200px;
+    height:200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+
+.card div {
+    width: 250px;
+    padding-right: 10px;
+    float: right;
+    text-align: left;
+}
+
+.card h3 {
+    text-align: center;
+}
+
+.image_card {
+    overflow: auto;
+    display: inline-block;
+    max-width: 500px;
+    height: 500px;
+    margin: 20px;
+    /* border-style: double;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: black;
+    background-color: white; */
+}
+
+.image_card img {
+    height: 300px;
+    max-width: 400px;
+    margin: 0px;
+}
+
+.image_card h3 {
+    margin: 15px;
+}
+
+.image_card p {
+    margin: 10px
+}
 .checklist {
     text-align: left;
     font-size: 28px;
