@@ -4,21 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>ArcGIS API for JavaScript Tutorials: Create a JavaScript starter app</title>
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.16/"></script>
     <script src= "webMap.js"></script>
+    <script src="checklist.js"></script>
   </head>
-  <body>
+  <body onload="setTrue('mapOpened');">
+    <div class="header">
+      <a href="index.html"><img src="resources/glacier_logo.png"></a>
+      <h1>Glacier Backcountry Trip Planning</h1>
+      <div class="header-row">
+          <h2 class="tab"><a href="index.html">Backpacking Preparation</a></h2>
+          <h2 class="tab"><a href="index.html">Safety</a></h2>
+          <h2 class="tab"><a href="webMap.html">Map</a></h2>
+          <h2 class="tab"><a href="index.html">Trip Planning</a></h2>
+          <h2 class="tab"><a href="about_us.html">About Us</a></h2>
+      </div>
+    </div>
     <div id="viewDiv"></div>
   </body>
 </html>
