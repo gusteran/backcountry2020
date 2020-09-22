@@ -251,6 +251,19 @@ define([
         }));
 
       }
+
+      if(true){
+        var unionToolButton = dom.byId("unionTool");
+        
+        domClass.remove(unionToolButton, "hide");
+        unionToolButton.title = "Click here to combine tracks into a single profile";
+      
+        on(unionToolButton, "click", lang.hitch(this, function () {
+          this.elevationWidget.toggleUnion();
+          domClass.toggle("unionTool", "active");
+        }));
+      }
+
       query(".closeBtn").on("click", lang.hitch(this, function () {
         array.forEach(this.containers, lang.hitch(this, function (container) {
           domClass.remove(container.btn, "activeTool");

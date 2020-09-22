@@ -1,4 +1,4 @@
-var union = true;
+var union = false;
 var currentGeometry = null;
 
 define([
@@ -135,6 +135,11 @@ define([
       this.profileWidget.clearProfile();
       // Clear any selected graphics
       this.selGraphicsLayer.clear();
+    },
+
+    toggleUnion: function () {
+      union = !union;
+      console.log("Union is "+union);
     }
   });
 });
