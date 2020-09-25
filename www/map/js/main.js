@@ -122,6 +122,7 @@ define([
         def.reject(error);
         promise = def.promise;
       }
+
       return promise;
     },
     reportError: function (error) {
@@ -359,7 +360,8 @@ define([
         }));
       }
       // setup the legend tool
-      if (this.config.legend) {
+      var legend = this.config.legend || this.config.mapLegend;
+      if (legend) {
         require(["esri/dijit/LayerList"], lang.hitch(this, function (LayerList) {
           var legendButton = dom.byId("legendBtn");
           domStyle.set(legendButton, "display", "inline-block");
@@ -390,6 +392,21 @@ define([
               });
             }
           }));
+        }));
+      }
+      // setup the Instructions tool
+      if (this.config.instructions) {
+        var instructionsButton = dom.byId("instructionsBtn");
+        domStyle.set(instructionsButton, "display", "inline-block");
+        instructionsButton.title = "Test Instructions";//this.config.i18n.instructions.tip;
+        this.containers.push({
+          btn: "instructionsBtn",
+          container: "instructionsContainer"
+        });
+
+        on(instructionsButton, "click", lang.hitch(this, function () {
+          this._toggleButtonContainer(instructionsButton, "instructionsContainer");
+          console.log("instructions");
         }));
       }
       // setup the share dialog
@@ -521,6 +538,9 @@ define([
       } else {
         domClass.add(document.body, "nosearch");
       }
+
+      //starts info window
+      this._toggleButtonContainer(instructionsButton, "instructionsContainer");
     },
     _getBasemapGroup: function () {
       //Get the id or owner and title for an organizations custom basemap group.
@@ -538,6 +558,8 @@ define([
       return basemapGroup;
     },
     _toggleButtonContainer: function (button, container) {
+      console.log("Toggle "+container+" with "+button);
+      console.log(this.containers)
       var position = domGeometry.position(button);
       domClass.toggle(button, "activeTool");
       if (domClass.contains(button, "activeTool")) {
@@ -567,6 +589,7 @@ define([
           domClass.add(document.body, "noscroll");
         }
       }));
+      
     },
 
     _setupProfile: function () {

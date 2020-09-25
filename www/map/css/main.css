@@ -165,6 +165,10 @@ g#mapDiv_graphics_layer path {
   content: "\e61d"
 }
 
+.icon-instructions:before {
+  content: "<I>"
+}
+
 .icon-close:before {
   content: "\e600";
 }
@@ -428,7 +432,7 @@ that appear below the zoom slider */
   top: 134px;
   left: 20px;
   width: 30px;
-  height: 120px;
+  height: 180px;
   text-align: center;
 }
 
@@ -519,7 +523,8 @@ that appear below the zoom slider */
 
 #legendContainer,
 #basemapContainer,
-#shareContainer {
+#shareContainer,
+#instructionsContainer {
   border-radius: 2px;
   visibility: hidden;
   display: none;
@@ -532,7 +537,8 @@ that appear below the zoom slider */
 
 #legendDiv,
 #basemapDiv,
-#shareDiv {
+#shareDiv,
+#instructionsDiv {
   overflow: auto;
   height: auto;
   width: 240px;
