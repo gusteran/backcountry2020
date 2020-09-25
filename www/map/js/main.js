@@ -161,10 +161,11 @@ define([
         bingMapsKey: this.config.orgInfo.bingKey || ""
       }).then(lang.hitch(this, function (response) {
         this.map = response.map;
-        dom.byId("elevTitle").innerHTML = this.config.title || response.itemInfo.item.title;
+        var elevMapTitle = this.config.mapTitle || this.config.title || response.itemInfo.item.title;
+        dom.byId("elevTitle").innerHTML = elevMapTitle;
         document.title = this.config.title || response.itemInfo.item.title;
 
-        var desc = this.config.description || response.itemInfo.item.snippet;
+        var desc = this.config.mapDesc || this.config.description || response.itemInfo.item.snippet;
         if (desc) {
           dom.byId("desc").innerHTML = desc;
           domUtils.show(dom.byId("desc"));

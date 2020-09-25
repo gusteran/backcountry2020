@@ -109,9 +109,15 @@ define([
       // generate elevation info
       var gainLossDetails = null;
       if (this.profileWidget && this.profileWidget._profileChart && this.profileWidget._profileChart._profileResults && this.profileWidget._profileChart._profileResults.elevations) {
-
+        
         var elevations = this.profileWidget._profileChart._profileResults.elevations;
+        
+        console.log(elevations);
+        
         var dataStats = this.profileWidget._profileChart._dataRangeStats || {};
+        
+        console.log(dataStats);
+
         var yMaxSource = dataStats.yMax - (dataStats.yRange * 0.05);
         var yMinSource = dataStats.yMin + (dataStats.yRange * 0.05);
         var detailFormat = {
