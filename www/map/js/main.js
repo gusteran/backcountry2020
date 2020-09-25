@@ -621,7 +621,9 @@ define([
       if (this.elevationWidget.profileWidget && this.elevationWidget.profileWidget._directionButton) {
         on(this.elevationWidget.profileWidget._directionButton, "click", lang.hitch(this, function () {
           on.once(this.elevationWidget.profileWidget._profileChart, "chart-update", lang.hitch(this, function () {
-            var content = esriLang.substitute(this.elevationWidget.generateElevationInfo(), this.config.i18n.elevation.gainLossTemplate);
+            var elevInfo = this.elevationWidget.generateElevationInfo();
+            var content = esriLang.substitute(elevInfo, this.config.i18n.elevation.gainLossTemplate);
+            content += " Gain: "+elevInfo.gain +" Loss: "+elevInfo.loss;
             dom.byId("elevInfo").innerHTML = content;
           }));
         }));
@@ -636,7 +638,9 @@ define([
           dom.byId("elevInfo").innerHTML = "";
         });
         on.once(this.elevationWidget.profileWidget._profileChart, "chart-update", lang.hitch(this, function () {
-          var content = esriLang.substitute(this.elevationWidget.generateElevationInfo(), this.config.i18n.elevation.gainLossTemplate);
+          var elevInfo = this.elevationWidget.generateElevationInfo();
+          var content = esriLang.substitute(elevInfo, this.config.i18n.elevation.gainLossTemplate);
+          content += " Gain: "+elevInfo.gain +" Loss: "+elevInfo.loss;
           dom.byId("elevInfo").innerHTML = content;
         }));
       }));
