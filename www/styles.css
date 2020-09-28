@@ -23,7 +23,7 @@ header{
     height: 150px;
     width: 100%;
     margin: 0px;
-    background-image: url("resources/BC_header.JPG");
+    background-image: url("resources/BC_header.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -207,7 +207,6 @@ nav a {
     margin-bottom: 50px;
     margin-left: 20px;
     margin-right: 20px;
-    position: center;
     float: left;
 }
 
@@ -339,13 +338,34 @@ nav a {
     text-align: center;
 }
 
+/* --Landing Page-- */
+.landing_title h1 {
+    font-size: 48px;
+    color: #403925;
+    text-align: center;
+}
+
+.landing_title h3 {
+    font-size: 30px;
+    color: #403925;
+    text-align: center;
+}
+
+.landing_title p {
+    margin-left: 10px;
+    text-align: left;
+    font-size: 24px;
+    color: #6f5427;
+}
+/* -------------------- */
+
 /* --Planning Checklist-- */
 .checklist {
     text-align: left;
     font-size: 28px;
     background-color: white;
     width: fit-content;
-    margin: 50px 10px; 
+    margin: 25px 10px; 
     display: inline-block;
     padding: 28px;
     border-radius: 20px;
