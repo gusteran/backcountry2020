@@ -66,8 +66,11 @@ nav ul {
     
 nav li {
     display: inline-block;
+    font-size: 18px;
     margin-left: 0px;
     padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
     
 nav a {
@@ -265,27 +268,7 @@ nav a {
     margin: 10px;
 }
 
-.page-logo {
-    vertical-align: text-top;
-    text-decoration: underline;
-    text-align: center;
-    width: 250px;
-    height: 300px;
-    margin: 25px;
-
-}
-
-.page-logo img {
-    height: 250px;
-    width: 250px;
-}
-
-.page-logo h2 {
-    font-size: 32px;
-    color: darkred;
-    margin: 0px;
-}
-
+/* --About Us Page-- */
 .person {
     vertical-align: text-top;
     text-decoration: underline;
@@ -339,10 +322,15 @@ nav a {
 }
 
 /* --Landing Page-- */
+.big_container{
+    overflow: hidden;
+    Margin: 0px;
+}
+
 .landing_title h1 {
     font-size: 48px;
     color: #403925;
-    text-align: center;
+    text-align: center; 
 }
 
 .landing_title h3 {
@@ -352,21 +340,60 @@ nav a {
 }
 
 .landing_title p {
-    margin-left: 10px;
+    margin-left: 200px;
+    margin-right: 150px;
     text-align: left;
     font-size: 24px;
     color: #6f5427;
 }
-/* -------------------- */
 
-/* --Planning Checklist-- */
+.separator {
+    margin-right: 150px;
+    margin-left: 200px;
+    height: fit-content;
+}
+.separator hr {
+    border-color: #6f5427;
+    background-color: #6f5427;
+    border-style: solid;
+    border-width: 5px 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.list_container {
+    float: left;
+    width: 60%;
+}
+
+.box_container {
+    float: left;
+    width: 40%;
+}
+
+.box img {
+    display: block;
+    width: 400px;
+    border-style: none;
+    border-radius: 20px;
+} 
+
+.box p {
+    color: #6f5427;
+    font-size: 18px;
+    margin-right: 200px;
+    margin-left: 10px;
+}
+
 .checklist {
     text-align: left;
     font-size: 28px;
     background-color: white;
     width: fit-content;
-    margin: 25px 10px; 
-    display: inline-block;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin: 25px 10px; 
+    display: inline-block; */
     padding: 28px;
     border-radius: 20px;
 }
