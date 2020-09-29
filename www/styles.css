@@ -18,7 +18,7 @@ body {
     border: 0px;
 }
 
-/* --Header formatting-- */
+/* --Header-- */
 header{
     height: 150px;
     width: 100%;
@@ -333,7 +333,7 @@ nav a {
     text-align: center; 
 }
 
-.landing_title h3 {
+.landing_title h2 {
     font-size: 30px;
     color: #403925;
     text-align: center;
