@@ -95,42 +95,6 @@ nav a {
 }
 /* -------------------- */
 
-
-/*Previous Header Sytle*/
-/*.header img {
-    margin-bottom: 0px;
-    margin-top: 0px;
-    float: left;
-    margin-left: 25px;
-    height: 150px;
-    width: 150px;
-}
-
-.header h1 {
-    margin-top: 0px;
-    font-size: 25px;
-    margin-left: 50px;
-    padding-top: 50px;
-}
-
-.header a:hover {
-    /* top: -10px; */
-   /*text-decoration:underline;
-}
-
-.header * {
-    text-decoration: none;
-    position: relative;
-    margin: 10px;
-    text-align: center;
-}
-
-.header_landing h1 {
-    font-size: 50px;
-    padding-top: 50px;
-} */
-/* ------------------- */
-
 /* --General Website Content-- */
 .content {
     margin: 25px;
@@ -175,8 +139,10 @@ nav a {
     color: #403925;
 }
 
-.safety_tips h2{
+.GNP_safe h2{
     color: #403925;
+    margin-right: 50px;
+    margin-left: 50px;
     padding: 10px 0px;
     border-style: double;
     border-width: 5px 0px;
@@ -191,41 +157,36 @@ nav a {
 
 .card {
     display: inline-block;
-    width: 500px;
+    width: 600px;
     height: 300px;
-    margin: 25px 50px;
+    margin: 25px 25px;
     padding-right: 10px;
     padding-left: 10px;
-    border-style: double;
-    border-width: 0px 2px;
+    /* border-style: double;
+    border-width: 0px 2px; */
     /* border-radius: 20px;
     border-color: black;
     background-color: white; */
 }
 
 .card img {
-    width: 200px;
-    height:200px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
     float: left;
+    width: 300px;
+    height: 300px;
+    margin: 0px 20px 50px 20px;
+    border-style: none;
+    border-radius: 20px;
 }
 
 .card div {
-    width: 250px;
-    padding-right: 10px;
     float: right;
     text-align: left;
+    width: 250px;
+    padding-left: 10px;
 }
 
 .card h3 {
-    text-align: center;
-    color: #403925;
-}
-
-.GNP_safe h2{
+    text-align: left;
     color: #403925;
 }
 
@@ -239,13 +200,15 @@ nav a {
     border-radius: 20px;
     border-width: 2px;
     border-color: black;
-    background-color: white; */
+    background-color: white;  */
 }
 
 .image_card img {
     height: 300px;
     max-width: 400px;
     margin: 0px;
+    border-style: none;
+    border-radius: 20px;
 }
 
 .image_card h3 {
