@@ -189,6 +189,18 @@ nav a {
     text-align: left;
     color: #403925;
 }
+/* -------------------- */
+
+/* --Planning/Preperation Page-- */
+.text_box {
+    text-align: left;
+    max-width: 1040px;
+    display: inline-block;
+}
+
+.text_box * {
+    margin: 10px;
+}
 
 .image_card {
     overflow: auto;
@@ -217,18 +229,6 @@ nav a {
 
 .image_card p {
     margin: 10px
-}
-/* -------------------- */
-
-/* --Planning/Preperation Page-- */
-.text_box {
-    text-align: left;
-    max-width: 1040px;
-    display: inline-block;
-}
-
-.text_box * {
-    margin: 10px;
 }
 
 /* --About Us Page-- */
