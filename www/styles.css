@@ -30,16 +30,45 @@ header{
     background-color: transparent;
     overflow: hidden;
     text-decoration: none;
+    display: block;
 }
 
 header h1 {
-    margin: 25px 350px;
+    margin: 15px 350px 0px 350px;
     font-size: 50px;
     color: white;
     border: 5px solid white;
     border-radius: 10px;
-    text-align: center
+    text-align: center;
 }
+/* --Map Minimizing Header-- */
+.mini_header {
+    height: 30px;
+    width: 100%;
+    margin: 0px;
+    overflow: hidden;
+    background-image: url("resources/BC_header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+}
+
+button {
+    
+    float: right;
+    width: fit-content;
+    height: 30px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    background-color: transparent;
+    border-style: none;
+    border-radius: 5px;
+}
+/* -------------------- */
 /* -------------------- */
 
 /* --Navigation Bar-- */
@@ -77,21 +106,6 @@ nav a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-}
-/* -------------------- */
-
-/* --About us Formating-- */
-.header-row {
-    display: inline-block;
-    text-align: center;
-    width: fit-content;
-    overflow: hidden;
-}
-
-.header-row * { 
-    display: inline-block;
-    width: min-content;
-    color: lavender;
 }
 /* -------------------- */
 
@@ -243,6 +257,19 @@ nav a {
 }
 
 /* --About Us Page-- */
+.header-row {
+    display: inline-block;
+    text-align: center;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.header-row * { 
+    display: inline-block;
+    width: min-content;
+    color: lavender;
+}
+
 .person {
     vertical-align: text-top;
     text-decoration: underline;
@@ -252,7 +279,6 @@ nav a {
     margin: 10px;
 
 }
-
 .person img {
     height: 200px;
     width: 200px;
@@ -267,6 +293,7 @@ nav a {
     color: black;
     margin: 0px;
 }
+/* -------------------- */
 
 .text_card {
     /* overflow: auto; */

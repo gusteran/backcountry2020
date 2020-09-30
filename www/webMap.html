@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS API for JavaScript Tutorials: Create a JavaScript starter app</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.16/"></script>
-    <script src= "webMap.js"></script>
-    <script src="checklist.js"></script>
-  </head>
 
-  <!--Header and Navigation Bar-->
-  <header>
-    <nav>
-      <a href="index.html"><img src="resources/glacier_logo.png" /></a>
-        <ul>
-            <li><a href="planning.html" class="page-logo">Plan</a></li>
-            <li><a href="preparation.html" class="page-logo">Prep</a></li>
-            <li><a href="safety.html" class="page-logo">Safety</a></li>
-            <li><a href="webMap.html" class="page-logo">Map</a></li>
-            <li><a href="about_us.html" class="page-logo">About Us</a></li>
-        </ul>
-    </nav>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>ArcGIS API for JavaScript Tutorials: Create a JavaScript starter app</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.16/"></script>
+  <script src="webMap.js"></script>
+  <script src="checklist.js"></script>
+  <script src="minimize.js"></script>
+</head>
+
+<!--Header and Navigation Bar-->
+<header id="map_header">
+  <nav>
+    <a href="index.html"><img src="resources/glacier_logo.png" /></a>
+    <ul>
+      <li><a href="planning.html" class="page-logo">Plan</a></li>
+      <li><a href="preparation.html" class="page-logo">Prep</a></li>
+      <li><a href="safety.html" class="page-logo">Safety</a></li>
+      <li><a href="webMap.html" class="page-logo">Map</a></li>
+      <li><a href="about_us.html" class="page-logo">About Us</a></li>
+    </ul>
+  </nav>
     <h1>Glacier Backcountry Trip Planning</h1>
+    <button type="button" onclick="minimizeHeader()">-
+    </button>
 </header>
 
 <!--Body and Page Content-->
-  <body onload="setTrue('mapOpened');">
-    <!--<div class="header">
-     <a href="index.html"><img src="resources/glacier_logo.png"></a>
-      <h1>Glacier Backcountry Trip Planning</h1>
-      <div class="header-row">
-          <h2 class="tab"><a href="index.html">Backpacking Preparation</a></h2>
-          <h2 class="tab"><a href="index.html">Safety</a></h2>
-          <h2 class="tab"><a href="webMap.html">Map</a></h2>
-          <h2 class="tab"><a href="index.html">Trip Planning</a></h2>
-          <h2 class="tab"><a href="about_us.html">About Us</a></h2>
-      </div>
-    </div> -->
-    <!-- <div id="viewDiv"></div> -->
-    <iframe src="map/index.html" id="viewDiv"></iframe>
-  </body>
+
+<body onload="setTrue('mapOpened');">
+  <div class="mini_header" id="temp_header">
+    <button type="button" onclick="minimizeHeader()">-
+    </button>
+  </div>
+  <iframe src="map/index.html" id="viewDiv"></iframe>
+</body>
+
 </html>
