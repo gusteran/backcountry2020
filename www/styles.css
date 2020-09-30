@@ -109,6 +109,12 @@ nav a {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+nav li:hover,
+nav img:hover{
+    font-weight: bolder;
+    opacity: 0.5;
+}
 /* -------------------- */
 
 /* --General Website Content-- */
