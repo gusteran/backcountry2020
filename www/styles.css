@@ -1,3 +1,8 @@
+
+/* CSS Color Scheme: 
+   h1-h3: #404E5A 
+   p: #594F3F */
+
 html,
 body {
     height: 100%;
@@ -20,6 +25,7 @@ body {
 
 /* --Header-- */
 header{
+    display: block;
     height: 150px;
     width: 100%;
     margin: 0px;
@@ -30,7 +36,6 @@ header{
     background-color: transparent;
     overflow: hidden;
     text-decoration: none;
-    display: block;
 }
 
 header h1 {
@@ -41,8 +46,9 @@ header h1 {
     border-radius: 10px;
     text-align: center;
 }
-/* --Map Minimizing Header-- */
+/* --Minimizing Header-- */
 .mini_header {
+    display: none;
     height: 30px;
     width: 100%;
     margin: 0px;
@@ -51,18 +57,16 @@ header h1 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    display: none;
 }
 
 button {
-    
     float: right;
     width: fit-content;
     height: 30px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin: 0px 5px 5px 0px;
     text-decoration: none;
     font-size: 30px;
+    font-weight: bold;
     color: white;
     background-color: transparent;
     border-style: none;
@@ -97,9 +101,7 @@ nav li {
     display: inline-block;
     font-size: 18px;
     margin-left: 0px;
-    padding-top: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 5px 20px 0px 20px;
 }
     
 nav a {
@@ -115,27 +117,30 @@ nav a {
     border: 50px;
     padding-right: 25px;
     padding-left: 25px;
-    color: #403925;
     text-align: center;
 }
 
 .content h1 {
     font-size: 48px;
+    color:#404E5A;
 }
 
 .content h2 {
     font-size: 36px;
+    color:#404E5A;
 }
 
 .content h3 {
     font-size: 30px;
+    color:#404E5A;
 }
 
 .content p,
 .content pre,
 .content li {
     font-size: 18px;
-    color: black;
+    /* color:#6f5427; */
+    color: #594F3F;
 }
 /* -------------------- */
 
@@ -143,20 +148,19 @@ nav a {
 .safe_heading a {
     text-decoration: underline;
     vertical-align: middle;
-    color: #403925;
+    color:#404E5A;
 }
 
 .safe_heading li{
     list-style: none;
     display: inline-block;
     text-align: center;
-    color: #403925;
+    color:#404E5A;
 }
 
 .GNP_safe h2{
-    color: #403925;
-    margin-right: 50px;
-    margin-left: 50px;
+    color:#404E5A;
+    margin: 0px 50px;
     padding: 10px 0px;
     border-style: double;
     border-width: 5px 0px;
@@ -201,7 +205,8 @@ nav a {
 
 .card h3 {
     text-align: left;
-    color: #403925;
+    color:#404E5A;
+    /* color: #403925; */
 }
 /* -------------------- */
 
@@ -290,37 +295,10 @@ nav a {
 
 .person h2 {
     font-size: 32px;
-    color: black;
+    color:#404E5A;
     margin: 0px;
 }
 /* -------------------- */
-
-.text_card {
-    /* overflow: auto; */
-    display: inline-block;
-    text-align: left;
-    width: 500px;
-    min-height: 300px;
-    margin: 20px;
-    border-style: double;
-    border-width: 0px 2px;
-    /* border-radius: 20px;
-    border-color: black;
-    background-color: white; */
-}
-
-.text_card ul,
-.text_card ol,
-.image_card ul{
-    text-align: left;
-    max-width: 500px;
-    margin: 5px 1px;
-    float: left;
-}
-
-.text_card h3 {
-    text-align: center;
-}
 
 /* --Landing Page-- */
 .big_container{
@@ -330,13 +308,13 @@ nav a {
 
 .landing_title h1 {
     font-size: 48px;
-    color: #403925;
+    color:#404E5A;
     text-align: center; 
 }
 
 .landing_title h2 {
     font-size: 30px;
-    color: #403925;
+    color:#404E5A;
     text-align: center;
 }
 
@@ -345,7 +323,7 @@ nav a {
     margin-right: 150px;
     text-align: left;
     font-size: 24px;
-    color: #6f5427;
+    color: #594F3F;
 }
 
 .separator {
@@ -353,9 +331,10 @@ nav a {
     margin-left: 200px;
     height: fit-content;
 }
+
 .separator hr {
-    border-color: #6f5427;
-    background-color: #6f5427;
+    border-color:#404E5A;
+    background-color:#404E5A;
     border-style: solid;
     border-width: 5px 5px 5px 5px;
     border-radius: 10px;
@@ -379,7 +358,7 @@ nav a {
 } 
 
 .box p {
-    color: #6f5427;
+    color: #594F3F;
     font-size: 18px;
     margin-right: 200px;
     margin-left: 10px;
@@ -402,6 +381,7 @@ nav a {
 .checklist ul li {
     font-size: 24px;
     list-style: none;
+    color: #594F3F;
 }
 
 /* Customize the label (the container) */
@@ -415,6 +395,7 @@ nav a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    color: #594F3F;
   }
   
   /* Hide the browser's default checkbox */
