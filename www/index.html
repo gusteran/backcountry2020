@@ -12,11 +12,11 @@
     <nav>
         <img src="resources/glacier_logo.png" />
         <ul>
-            <li><a href="preparation.html" class="page-logo">Trip Planning</a></li>
-            <li><a href="preparation.html" class="page-logo">Preparation</a></li>
-            <li><a href="safety.html" class="page-logo">Safety</a></li> 
-            <li><a href="webMap.html" class="page-logo">Maps</a></li>
-            <li><a href="about_us.html" class="page-logo">About Us</a></li>
+            <li><a href="planning.html">Plan</a></li>
+            <li><a href="preparation.html">Prep</a></li>
+            <li><a href="safety.html">Safety</a></li>
+            <li><a href="webMap.html">Map</a></li>
+            <li><a href="about_us.html">About Us</a></li>
         </ul>
     </nav>
     <h1>Glacier Backcountry Trip Planning</h1>
@@ -24,86 +24,118 @@
 
 <!--Body and Page Content-->
 <body onload="updateChecklist();">
-    <div>
-        <form onchange="updateChecklistDatabase()" class="checklist">
-            <label class="container">Backcountry Planning<input id="checkPlanning" type="checkbox" /><span
-                    class="checkmark"></span></label>
-            <ul>
-                <li>
-                    <label class="container">Review the Rules and Regulations<input id="checkRules"
-                            type="checkbox" /><span class="checkmark"></span></label>
-                </li>
-                <li>
-                    <label class="container">Create multiple plans for your permit
-                        <input id="checkMultiplePlans" type="checkbox" />
+    <div class="landing_title">
+        <h1>Our Mission</h1>
+        <h2>To help hikers plan backcountry trips in Glacier National Park</h3>
+        <div class="separator">
+            <hr>
+        </div>
+        <p>
+            Planning Checklist - whether you are an advanced backpacker or making the transitions from day hikes,
+            use the checklist below to fully plan your backcountry excursion
+        </p>
+    </div>
+    <div class="big_container">
+        <div class="list_container">
+            <div>
+                <form onchange="updateChecklistDatabase()" class="checklist">
+                    <label class="container">Backcountry Planning<input id="checkPlanning" type="checkbox" /><span
+                            class="checkmark"></span></label>
+                    <ul>
+                        <li>
+                            <label class="container">Review the Rules and Regulations<input id="checkRules"
+                                    type="checkbox" /><span class="checkmark"></span></label>
+                        </li>
+                        <li>
+                            <label class="container">Create multiple plans for your permit
+                                <input id="checkMultiplePlans" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="container">Apply for an advanced permit
+                                <input id="checkApplyForPermit" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    <label class="container">Safety
+                        <input id="checkSafety" type="checkbox" />
                         <span class="checkmark"></span>
                     </label>
-                </li>
-                <li>
-                    <label class="container">Apply for an advanced permit
-                        <input id="checkApplyForPermit" type="checkbox" />
+                    <ul>
+                        <li>
+                            <label class="container">Check Your Packing List
+                                <input id="checkPacking" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="container">Check for any Updates from GNP
+                                <input id="checkGNPUpdates" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="container">Review the Hike Safe Page
+                                <input id="checkHikeSafe" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    <label class="container">Interact with Map
+                        <input id="checkMap" type="checkbox" />
                         <span class="checkmark"></span>
                     </label>
-                </li>
-            </ul>
-            <label class="container">Safety
-                <input id="checkSafety" type="checkbox" />
-                <span class="checkmark"></span>
-            </label>
-            <ul>
-                <li>
-                    <label class="container">Check Your Packing List
-                        <input id="checkPacking" type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="container">Check for any Updates from GNP
-                        <input id="checkGNPUpdates" type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="container">Review the Hike Safe Page
-                        <input id="checkHikeSafe" type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-            </ul>
-            <label class="container">Interact with Map
-                <input id="checkMap" type="checkbox" />
-                <span class="checkmark"></span>
-            </label>
-            <ul>
-                <li>
-                    <label class="container">Check out the Map
-                        <input id="checkMapOpened" type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="container">Add your trip
-                        <input id="checkAddTrip" type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="container">View mileage and elevation statistics
-                        <input id="checkStatistics" type="checkbox" />
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-            </ul>
-            <!-- This is the format to add more -->
-            <!-- <label class="container">
+                    <ul>
+                        <li>
+                            <label class="container">Check out the Map
+                                <input id="checkMapOpened" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="container">Add your trip
+                                <input id="checkAddTrip" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="container">View mileage and elevation statistics
+                                <input id="checkStatistics" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    <!-- This is the format to add more -->
+                    <!-- <label class="container">
                 <input id="" type="checkbox" />
                 <span class="checkmark"></span>
             </label>
             <ul>
             <li></li>
             </ul> -->
-        </form>
+                </form>
+            </div>
+        </div>
+        <div class=box_container>
+            <div class="box">
+                <a href="preparation.html"><img src="resources/landing_plan.jpg"/></a>
+                <p>Review rules, regulations, and permitting for your trip</p>
+            </div>
+        </div>
+        <div class=box_container>
+            <div class="box">
+                <a href="webMap.html"><img src="resources/landing_map.jpg"/></a>
+                <p>View Interactive Map with Trails, Campgrounds, Reviews, and More</p>
+            </div>
+        </div>
     </div>
+    <div class="separator">
+        <hr>
+    </div>
+    <div class = "landing_title">
+        <h2>Recent Trail Reports</h1>
     </div>
 </body>
 
