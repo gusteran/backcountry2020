@@ -1,4 +1,4 @@
-const DATABASE_LINK = 'http://localhost:3000/db';
+const DATABASE_LINK = 'http://localhost:3000/users';
 
 define([
   "dojo/_base/declare",
@@ -71,7 +71,10 @@ define([
     },
     testJsonRest: function (JsonRest) {
       this.store = new JsonRest({target: DATABASE_LINK});
-      this.store.get();
+      this.store.put({
+        trips: "please",
+        likedTrips: "work"
+      });
       // fetch(DATABASE_LINK)
       // .then(data => console.log(data));
     }
