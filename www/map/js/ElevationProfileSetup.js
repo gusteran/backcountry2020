@@ -77,6 +77,7 @@ define([
       on(this.map.infoWindow, "selection-change", lang.hitch(this, function () {
         var sel = this.map.infoWindow.getSelectedFeature();
         if (sel && sel.geometry && sel.geometry.type === "polyline") {
+          console.log(sel);
           this.generateProfile(sel.geometry);
         } else {
           this.clearProfileChart();
@@ -154,6 +155,7 @@ define([
     toggleUnion: function () {
       union = !union;
       console.log("Union is "+union);
+      this.emit("toggle-union");
     }
   });
 });
