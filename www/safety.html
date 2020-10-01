@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>GNP Backcountry Planning</title>
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  
-  <!--Header and Navigation Bar-->
+</head>
+
+<!--Header and Navigation Bar-->
 <header>
     <nav>
-        <img src="resources/glacier_logo.png" />
+        <a href="index.html"><img src="resources/glacier_logo.png" /></a>
         <ul>
-            <li><a href="preparation.html" class="page-logo">Trip Planning</a></li>
-            <li><a href="preparation.html" class="page-logo">Preparation</a></li>
-            <li><a href="safety.html" class="page-logo">Safety</a></li>
-            <li><a href="webMap.html" class="page-logo">Maps</a></li>
-            <li><a href="about_us.html" class="page-logo">About Us</a></li>
+            <li><a href="planning.html">Plan</a></li>
+            <li><a href="preparation.html">Prep</a></li>
+            <li><a href="safety.html">Safety</a></li>
+            <li><a href="webMap.html">Map</a></li>
+            <li><a href="about_us.html">About Us</a></li>
         </ul>
     </nav>
     <h1>Glacier Backcountry Trip Planning</h1>
 </header>
-  
+
 <!--Body and Page Content-->
-  <body>
+
+<body>
     <!--<div class="header">
       <a href="index.html"><img src="resources/glacier_logo.png" /></a>
       <h1>Glacier Backcountry Trip Planning</h1>
@@ -35,19 +37,25 @@
     </div>-->
     <div class="content">
         <div>
-            <h1>
-                <a href="https://www.nps.gov/articles/hiking-safety.htm" target="_blank">
-                    Hike Smart</a>
-            </h1>
-            <h4 style="font-style: italic; margin-top: -20px;">
-                A summarization of the National Park Services' guide linked above.
-            </h4>
+            <div class=safe_heading>
+               <ul>
+                <li> <h1>
+                    <a href="https://www.nps.gov/articles/hiking-safety.htm" target="_blank">
+                        Hike Smart:</a>
+                </h1> </li>
+                <li><h4 style="font-style: italic; margin-top: -10px;">
+                    A summarization of the National Park Services' guide linked here.
+                </h4></li>
+            </ul>
+            </div>
         </div>
         <div>
-            <h2>Backpacking Safety Tips</h2>
+            <div class=GNP_safe>
+                <h2>Backpacking Safety Tips</h2>
+            </div>
             <div class="card_holder">
                 <div class="card">
-                    <img src="resources/safety3.jpg">
+                    <img src="resources/safe_limits.jpg">
                     <div>
                         <h3>Know your limits</h3>
                         <p>What is your experience level?</p>
@@ -57,7 +65,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="resources/safety3.jpg">
+                    <img src="resources/safe_plan.jpg">
                     <div>
                         <h3>Plan Your Hike</h3>
                         <p>Leave a trip plan</p>
@@ -70,17 +78,18 @@
             </div>
             <div class="card_holder">
                 <div class="card">
-                    <img src="resources/safety3.jpg">
+                    <img src="resources/safe_pack.jpg">
                     <div>
                         <h3>What to Bring</h3>
-                        <p><a href="https://www.nps.gov/articles/10essentials.htm" target="_blank">The 10 Essentials</a></p>
+                        <p><a href="https://www.nps.gov/articles/10essentials.htm" target="_blank">The 10 Essentials</a>
+                        </p>
                         <p>Personal Locator Beacon</p>
                         <p>Water Treatment System</p>
                         <p>Equipment Repair Kit</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="resources/safety3.jpg">
+                    <img src="resources/safe_smart.jpg">
                     <div>
                         <h3>Hike Smart</h3>
                         <p>Ask Rangers questions</p>
@@ -88,25 +97,32 @@
                         <p>Yield to uphill hikers</p>
                     </div>
                 </div>
-            </div>            
-            <h2>Glacier National Park Safety Tips</h2>
+            </div>
+            <div class="GNP_safe">
+                <h2>Glacier National Park Safety Tips</h2>
+            </div>
             <div class="card_holder">
-                <div class="image_card">
-                    <img src="resources/safety1.jpg">
+                <div class="card">
+                    <img src="resources/safe_bear.jpg">
+                    <div>
                     <h3>WildLife Safety</h3>
                     <p>Water Filtration</p>
                     <p>Bears</p>
                     <p>Don't travel solo</p>
                 </div>
-                <div class="image_card">
-                    <img src="resources/safety2.jpg">
+                </div>
+                <div class="card">
+                    <img src="resources/safe_ice.jpg">
+                    <div>
                     <h3>Environmental Safety</h3>
                     <p>Drowning</p>
                     <p>Hypothermia</p>
                     <p>Snow and Ice</p>
                 </div>
+                </div>
             </div>
         </div>
     </div>
-  </body>
+</body>
+
 </html>
