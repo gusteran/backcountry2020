@@ -122,6 +122,7 @@ define([
         def.reject(error);
         promise = def.promise;
       }
+
       return promise;
     },
     reportError: function (error) {
@@ -161,10 +162,11 @@ define([
         bingMapsKey: this.config.orgInfo.bingKey || ""
       }).then(lang.hitch(this, function (response) {
         this.map = response.map;
-        dom.byId("elevTitle").innerHTML = this.config.title || response.itemInfo.item.title;
+        var elevMapTitle = this.config.mapTitle || this.config.title || response.itemInfo.item.title;
+        dom.byId("elevTitle").innerHTML = elevMapTitle;
         document.title = this.config.title || response.itemInfo.item.title;
 
-        var desc = this.config.description || response.itemInfo.item.snippet;
+        var desc = this.config.mapDesc || this.config.description || response.itemInfo.item.snippet;
         if (desc) {
           dom.byId("desc").innerHTML = desc;
           domUtils.show(dom.byId("desc"));
@@ -358,7 +360,8 @@ define([
         }));
       }
       // setup the legend tool
-      if (this.config.legend) {
+      var legend = this.config.legend || this.config.mapLegend;
+      if (legend) {
         require(["esri/dijit/LayerList"], lang.hitch(this, function (LayerList) {
           var legendButton = dom.byId("legendBtn");
           domStyle.set(legendButton, "display", "inline-block");
@@ -389,6 +392,21 @@ define([
               });
             }
           }));
+        }));
+      }
+      // setup the Instructions tool
+      if (this.config.instructions) {
+        var instructionsButton = dom.byId("instructionsBtn");
+        domStyle.set(instructionsButton, "display", "inline-block");
+        instructionsButton.title = "Test Instructions";//this.config.i18n.instructions.tip;
+        this.containers.push({
+          btn: "instructionsBtn",
+          container: "instructionsContainer"
+        });
+
+        on(instructionsButton, "click", lang.hitch(this, function () {
+          this._toggleButtonContainer(instructionsButton, "instructionsContainer");
+          console.log("instructions");
         }));
       }
       // setup the share dialog
@@ -520,6 +538,9 @@ define([
       } else {
         domClass.add(document.body, "nosearch");
       }
+
+      //starts info window
+      this._toggleButtonContainer(instructionsButton, "instructionsContainer");
     },
     _getBasemapGroup: function () {
       //Get the id or owner and title for an organizations custom basemap group.
@@ -537,6 +558,8 @@ define([
       return basemapGroup;
     },
     _toggleButtonContainer: function (button, container) {
+      console.log("Toggle "+container+" with "+button);
+      console.log(this.containers)
       var position = domGeometry.position(button);
       domClass.toggle(button, "activeTool");
       if (domClass.contains(button, "activeTool")) {
@@ -566,6 +589,7 @@ define([
           domClass.add(document.body, "noscroll");
         }
       }));
+      
     },
 
     _setupProfile: function () {
@@ -620,7 +644,9 @@ define([
       if (this.elevationWidget.profileWidget && this.elevationWidget.profileWidget._directionButton) {
         on(this.elevationWidget.profileWidget._directionButton, "click", lang.hitch(this, function () {
           on.once(this.elevationWidget.profileWidget._profileChart, "chart-update", lang.hitch(this, function () {
-            var content = esriLang.substitute(this.elevationWidget.generateElevationInfo(), this.config.i18n.elevation.gainLossTemplate);
+            var elevInfo = this.elevationWidget.generateElevationInfo();
+            var content = esriLang.substitute(elevInfo, this.config.i18n.elevation.gainLossTemplate);
+            content += " Gain: "+elevInfo.gain +" Loss: "+elevInfo.loss;
             dom.byId("elevInfo").innerHTML = content;
           }));
         }));
@@ -635,7 +661,9 @@ define([
           dom.byId("elevInfo").innerHTML = "";
         });
         on.once(this.elevationWidget.profileWidget._profileChart, "chart-update", lang.hitch(this, function () {
-          var content = esriLang.substitute(this.elevationWidget.generateElevationInfo(), this.config.i18n.elevation.gainLossTemplate);
+          var elevInfo = this.elevationWidget.generateElevationInfo();
+          var content = esriLang.substitute(elevInfo, this.config.i18n.elevation.gainLossTemplate);
+          content += " Gain: "+elevInfo.gain +" Loss: "+elevInfo.loss;
           dom.byId("elevInfo").innerHTML = content;
         }));
       }));

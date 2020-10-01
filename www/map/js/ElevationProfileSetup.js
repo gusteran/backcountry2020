@@ -1,5 +1,5 @@
-var union = false;
-var currentGeometry = null;
+// var union = false;
+// var currentGeometry = null;
 
 define([
   "dojo/_base/declare",
@@ -26,7 +26,9 @@ define([
   Graphic,
   GraphicsLayer,
   ElevationProfile,
-  geometryEngine
+  geometryEngine,
+  union,
+  currentGeometry
 ) {
   return declare("application.ElevationProfileSetup", [Evented], {
     constructor: function (parameters) {
@@ -37,6 +39,8 @@ define([
         scalebarUnits: null
       };
       lang.mixin(this, defaults, parameters);
+      union = false;
+      currentGeometry = null;
     },
 
     /* Public Methods */
@@ -109,7 +113,7 @@ define([
       // generate elevation info
       var gainLossDetails = null;
       if (this.profileWidget && this.profileWidget._profileChart && this.profileWidget._profileChart._profileResults && this.profileWidget._profileChart._profileResults.elevations) {
-
+        
         var elevations = this.profileWidget._profileChart._profileResults.elevations;
         var dataStats = this.profileWidget._profileChart._dataRangeStats || {};
         var yMaxSource = dataStats.yMax - (dataStats.yRange * 0.05);
@@ -119,12 +123,22 @@ define([
         };
         var elevFirst = elevations[0].y;
         var elevLast = elevations[elevations.length - 1].y;
+        var gain = 0;
+        var loss = 0;
+        for(i = 1; i < elevations.length; i++){
+          var diff = elevations[i].y - elevations[i-1].y;
+          if(diff > 0) gain += diff;
+          else if (diff < 0) loss += -diff;
+        }
+
         gainLossDetails = {
           min: Number.format(yMinSource, detailFormat),
           max: Number.format(yMaxSource, detailFormat),
           start: Number.format(elevFirst, detailFormat),
           end: Number.format(elevLast, detailFormat),
-          gainLoss: Number.format((elevLast - elevFirst), detailFormat)
+          gainLoss: Number.format((elevLast - elevFirst), detailFormat),
+          gain: Number.format(gain, detailFormat),
+          loss: Number.format(loss, detailFormat)
         };
         return gainLossDetails;
       }
