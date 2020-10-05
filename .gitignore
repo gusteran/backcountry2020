@@ -1,3 +1,5 @@
 gci.conf
 server/package-lock.json
 server/node_modules
+stderr.txt
+stdout.txt
