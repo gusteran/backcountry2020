@@ -36,15 +36,19 @@ header{
     background-color: transparent;
     overflow: hidden;
     text-decoration: none;
+    text-align: center;
 }
 
 header h1 {
-    margin: 15px 350px 0px 350px;
+    margin: 15px auto 0px auto;
     font-size: 50px;
     color: white;
     border: 5px solid white;
     border-radius: 10px;
     text-align: center;
+    padding: 0px calc(12.5% - 754.2px /8);
+    width: fit-content;
+    white-space: nowrap;
 }
 /* --Minimizing Header-- */
 .mini_header {
@@ -141,6 +145,11 @@ nav img:hover{
     color:#404E5A;
 }
 
+.content h4 {
+    font-size: 20px;
+    color:#404E5A;
+}
+
 .content p,
 .content pre,
 .content li {
@@ -148,9 +157,29 @@ nav img:hover{
     /* color:#6f5427; */
     color: #594F3F;
 }
+
+.link_header:link{
+    color: inherit;
+}
+
+.link_header:hover {
+    color: blue;
+}
 /* -------------------- */
 
 /* --Safety Page-- */
+.text_card {
+    display: inline-block;
+    width: 500px;
+    margin: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.text_card li {
+    margin: 5px;
+}
+
 .safe_heading a {
     text-decoration: underline;
     vertical-align: middle;
@@ -166,11 +195,12 @@ nav img:hover{
 
 .GNP_safe h2{
     color:#404E5A;
-    margin: 0px 50px;
+    margin: 0px auto;
     padding: 10px 0px;
     border-style: double;
     border-width: 5px 0px;
     border-radius: 5px;
+    max-width: 1250px;
 }
 
 .card_holder {
