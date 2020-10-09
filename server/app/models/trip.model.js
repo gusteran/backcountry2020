@@ -1,27 +1,40 @@
 const sql = require("./db.js");
+// const Day = require("./day.model.js");
 
 // constructor
-const User = function(user) {
-  this.Name = user.name;
-  // this.Trips = user.trips;
-  // this.LikedTrips = user.likedTrips;
+const Trip = function(trip) {
+  // let days = [];
+  // trip.segments.forEach((day)=>{
+  //   days.push(new Day({
+  //     trip: trip.id,
+  //     trails: day.trails,
+  //     campsite: day.campsite
+  //   }));
+  // });
+
+  this.user = trip.user;
+  this.id = trip.id;
+  this.segments = trip.segments;
+  this.review = trip.review;
+  this.isPublished = trip.isPublished;
+  this.popularity = trip.popularity;
 };
 
-User.create = (newUser, result) => {
-  sql.query("INSERT INTO Users SET ?", newUser, (err, res) => {
+Trip.create = (newTrip, result) => {
+  sql.query("INSERT INTO Trips SET ?", newTrip, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created user: ", { id: res.insertId, ...newUser });
-    result(null, { id: res.insertId, ...newUser });
+    console.log("created trip: ", { id: res.insertId, ...newTrip });
+    result(null, { id: res.insertId, ...newTrip });
   });
 };
 
-User.findById = (userId, result) => {
-  sql.query(`SELECT * FROM Users WHERE UserID = ${userId}`, (err, res) => {
+Trip.findById = (tripId, result) => {
+  sql.query(`SELECT * FROM Trips WHERE TripID = ${tripId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -29,32 +42,32 @@ User.findById = (userId, result) => {
     }
 
     if (res.length) {
-      console.log("found user: ", res[0]);
+      console.log("found trip: ", res[0]);
       result(null, res[0]);
       return;
     }
 
-    // not found User with the id
+    // not found Trip with the id
     result({ kind: "not_found" }, null);
   });
 };
 
-User.getAll = result => {
-  sql.query("SELECT * FROM Users", (err, res) => {
+Trip.getAll = result => {
+  sql.query("SELECT * FROM Trips", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log("users: ", res);
+    console.log("trips: ", res);
     result(null, res);
   });
 };
 
-User.updateById = (id, user, result) => {
+Trip.updateById = (id, user, result) => {
   sql.query(
-    "UPDATE Users SET Name = ? WHERE UserID = ?",
+    "UPDATE Trips SET Name = ? WHERE TripID = ?",
     [user.name, id],
     (err, res) => {
       if (err) {
@@ -64,7 +77,7 @@ User.updateById = (id, user, result) => {
       }
 
       if (res.affectedRows == 0) {
-        // not found User with the id
+        // not found Trip with the id
         result({ kind: "not_found" }, null);
         return;
       }
@@ -75,8 +88,8 @@ User.updateById = (id, user, result) => {
   );
 };
 
-User.remove = (id, result) => {
-  sql.query("DELETE FROM Users WHERE UserID = ?", id, (err, res) => {
+Trip.remove = (id, result) => {
+  sql.query("DELETE FROM Trips WHERE TripID = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -84,7 +97,7 @@ User.remove = (id, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // not found User with the id
+      // not found Trip with the id
       result({ kind: "not_found" }, null);
       return;
     }
@@ -94,8 +107,8 @@ User.remove = (id, result) => {
   });
 };
 
-User.removeAll = result => {
-  sql.query("DELETE FROM Users", (err, res) => {
+Trip.removeAll = result => {
+  sql.query("DELETE FROM Trips", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -107,4 +120,4 @@ User.removeAll = result => {
   });
 };
 
-module.exports = User;
+module.exports = Trip;

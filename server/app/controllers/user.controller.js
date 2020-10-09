@@ -11,6 +11,7 @@ exports.create = (req, res) => {
 
   // Create a User
   const user = new User({
+    name: req.body.name,
     trips: req.body.trips,
     likedTrips: req.body.likedTrips,
   });
