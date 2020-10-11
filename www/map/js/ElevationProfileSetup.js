@@ -84,7 +84,12 @@ define([
         }
       }));
     },
-
+    generateProfileNoUnion: function (geometry){
+      let temp = this.union;
+      this.union = false;
+      this.generateProfile(geometry);
+      this.union = temp;
+    },
     generateProfile: function (geometry) {
       console.log(union);
       console.log(currentGeometry);
@@ -92,6 +97,7 @@ define([
         geometry = geometryEngine.union(geometry, currentGeometry);
       }
       currentGeometry = geometry;
+      this.geometry = geometry;
       var profileLine = geometry;
       if (profileLine) {
         try {

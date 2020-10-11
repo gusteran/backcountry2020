@@ -49,9 +49,23 @@ map {
   font-style: italic;
 }
 
+.trip {
+  min-height: 60px;
+  border-width: 1px 0px;
+  border-color: #404E5A;
+  border-style: ridge;
+  vertical-align: middle;
+  margin: 10px 0px;
+}
+
 .trip p {
   float: left;
   text-align: left;
+  margin: 2px;
+}
+
+.trip p:hover {
+  text-decoration: underline;
 }
 
 .trip a {
