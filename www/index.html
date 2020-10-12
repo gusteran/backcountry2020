@@ -10,12 +10,13 @@
 <!--Header and Navigation Bar-->
 <header>
     <nav>
-        <img src="resources/glacier_logo.png" />
+        <a href="index.html"><img src="resources/glacier_logo.png" /></a>
         <ul>
-            <li><a href="planning.html">Plan</a></li>
-            <li><a href="preparation.html">Prep</a></li>
-            <li><a href="safety.html">Safety</a></li>
-            <li><a href="webMap.html">Map</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="planning.html">Plan Your Trip</a></li>
+            <li><a href="preparation.html">Permit Prep</a></li>
+            <li><a href="safety.html">Safety Tips</a></li>
+            <li><a href="webMap.html">Interactive Map</a></li>
             <li><a href="about_us.html">About Us</a></li>
         </ul>
     </nav>
@@ -23,7 +24,7 @@
 </header>
 
 <!--Body and Page Content-->
-<body onload="updateChecklist();">
+<body style="text-align: center;" onload="updateChecklist();">
     <div class="landing_title">
         <h1>Our Mission</h1>
         <h2>To help hikers plan backcountry trips in Glacier National Park</h3>
@@ -36,6 +37,45 @@
         </p>
     </div>
     <div class="big_container">
+        
+        <!-- <div style="float: left;"> -->
+            <div class=box_container>
+                <div class="box">
+                    <a href="planning.html"><img src="resources/retro_planning.jpg"/></a>
+                    <div class="overlay">
+                        <a href="planning.html">
+                            <p class="overlay_text">Walk through the step to plan a backcountry trip in glacier</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="webMap.html"><img src="resources/landing_map.jpg"/></a>
+                    <div class="overlay">
+                        <a href="webMap.html">
+                            <p class="overlay_text">View Interactive Map with Trails, Campgrounds, Reviews, and More</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class=box_container>
+                <div class="box">
+                    <a href="preparation.html"><img src="resources/landing_plan.jpg"/></a>
+                    <div class="overlay">
+                        <a href="preparation.html">
+                            <p class="overlay_text">Review rules, regulations, and permitting for your trip</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="safety.html"><img src="resources/safe_bear.jpg"/></a>
+                    <div class="overlay">
+                        <a href="safety.html">
+                            <p class="overlay_text">Check out safety tips</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
         <div class="list_container">
             <div>
                 <form onchange="updateChecklistDatabase()" class="checklist">
@@ -116,18 +156,6 @@
             <li></li>
             </ul> -->
                 </form>
-            </div>
-        </div>
-        <div class=box_container>
-            <div class="box">
-                <a href="preparation.html"><img src="resources/landing_plan.jpg"/></a>
-                <p>Review rules, regulations, and permitting for your trip</p>
-            </div>
-        </div>
-        <div class=box_container>
-            <div class="box">
-                <a href="webMap.html"><img src="resources/landing_map.jpg"/></a>
-                <p>View Interactive Map with Trails, Campgrounds, Reviews, and More</p>
             </div>
         </div>
     </div>

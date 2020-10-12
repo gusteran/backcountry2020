@@ -43,3 +43,28 @@ function setTrue(name) {
 function setFalse(name) {
   localStorage.setItem(name, "false");
 }
+
+const steps = [1, 2, 4, 5]
+
+function setupStepToggles (){
+  steps.forEach( (stepNum) => {
+    let toggle = document.getElementById("step"+stepNum+"-header");
+    toggle.addEventListener('click', function () {toggleDiv(stepNum);}, false);
+    let div = document.getElementById("step"+stepNum);
+    div.style.display = "none";
+  });
+}
+
+function toggleDiv(stepNum){
+  let div = document.getElementById("step"+stepNum);
+  if (div.style.display === "none") {
+    div.style.display = "block";
+    document.getElementById("step"+stepNum+"-arrow").classList.remove("arrow_right");
+    document.getElementById("step"+stepNum+"-arrow").classList.add("arrow_bottom");
+  } else {
+    div.style.display = "none";
+    document.getElementById("step"+stepNum+"-arrow").classList.remove("arrow_bottom");
+    document.getElementById("step"+stepNum+"-arrow").classList.add("arrow_right");
+  }
+}
+
