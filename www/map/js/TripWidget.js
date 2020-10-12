@@ -54,6 +54,7 @@ define([
       this.tripElements = [];
       this.tripElements.push(dom.byId("model-trip"));
       this.newTripStack = [5, 4, 3, 2,1];
+      this.lastSelected = null;
 
       on(dom.byId("model-trip"), "click", lang.hitch(this, function (){
         console.log("Northern Circle, ya clicked it");
@@ -158,13 +159,44 @@ define([
 
             this.trips[newTrip.tripId] = newTrip;
             // this.tripElements.push(dom.byId(""+newTrip.id));
-      
+            
+            let tripContainer = dom.byId("trip-"+newTrip.tripId);
             let tripElement = dom.byId(""+newTrip.tripId);
             dom.byId("trip-"+newTrip.tripId).classList.remove("hide");
             on(tripElement, "click", lang.hitch(this, function (){
+              if(this.lastSelected != null) this.lastSelected.classList.remove("selected_trip");
+              tripContainer.classList.add("selected_trip");
+              this.lastSelected = tripContainer;
               console.log("Click on trip of id: "+newTrip.tripId);
               this.elevationWidget.clearProfileChart();
               this.elevationWidget.generateProfileNoUnion(newTrip.geometry);
+            }));
+
+            let publishBtn = dom.byId("publish-"+newTrip.tripId);
+            on(publishBtn, "click", lang.hitch(this, function (){
+              newTrip.isPublished = !newTrip.isPublished;
+              if(newTrip.isPublished){
+                publishBtn.innerText = "Unpublish";
+              } else {
+                publishBtn.innerText = "Publish";
+              }
+              this.tripStore.put(newTrip).then((res) => {
+                console.log(res);
+              });
+            }));
+
+            if(newTrip.isPublished){
+              publishBtn.innerText = "Unpublish";
+            } else {
+              publishBtn.innerText = "Publish";
+            }
+      
+            let updateBtn = dom.byId("publish-"+newTrip.tripId);
+            on(updateBtn, "click", lang.hitch(this, function (){
+              newTrip.geometry = this.elevationWidget.geometry;
+              this.tripStore.put(newTrip).then((res) => {
+                console.log(res);
+              });
             }));
       
             let deleteBtn = dom.byId("delete-"+newTrip.tripId);
@@ -212,12 +244,37 @@ define([
       this.trips[newTrip.tripId] = newTrip;
       // this.tripElements.push(dom.byId(""+newTrip.id));
 
+      let tripContainer = dom.byId("trip-"+newTrip.tripId);
       let tripElement = dom.byId(""+newTrip.tripId);
       dom.byId("trip-"+newTrip.tripId).classList.remove("hide");
       on(tripElement, "click", lang.hitch(this, function (){
+        if(this.lastSelected != null) this.lastSelected.classList.remove("selected_trip");
+        tripContainer.classList.add("selected_trip");
+        this.lastSelected = tripContainer;
         console.log("Click on trip of id: "+newTrip.tripId);
         this.elevationWidget.clearProfileChart();
         this.elevationWidget.generateProfileNoUnion(newTrip.geometry);
+      }));
+
+      let publishBtn = dom.byId("publish-"+newTrip.tripId);
+      on(publishBtn, "click", lang.hitch(this, function (){
+        newTrip.isPublished = !newTrip.isPublished;
+        if(newTrip.isPublished){
+          publishBtn.innerText = "Unpublish";
+        } else {
+          publishBtn.innerText = "Publish";
+        }
+        this.tripStore.put(newTrip).then((res) => {
+          console.log(res);
+        });
+      }));
+
+      let updateBtn = dom.byId("publish-"+newTrip.tripId);
+      on(updateBtn, "click", lang.hitch(this, function (){
+        newTrip.geometry = this.elevationWidget.geometry;
+        this.tripStore.put(newTrip).then((res) => {
+          console.log(res);
+        });
       }));
 
       let deleteBtn = dom.byId("delete-"+newTrip.tripId);

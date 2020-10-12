@@ -54,7 +54,7 @@ Trip.findById = (tripId, userId, result) => {
 };
 
 Trip.getAll = result => {
-  sql.query("SELECT * FROM Trips", (err, res) => {
+  sql.query("SELECT * FROM Trips WHERE IsPublished", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

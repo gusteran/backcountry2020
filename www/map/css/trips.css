@@ -46,7 +46,16 @@ map {
 }
 
 .selected_trip {
-  font-style: italic;
+  height: 80px;
+  transition: height 0.5s ease;
+}
+
+.selected_trip p {
+  font-weight: bold;
+}
+
+.selected_trip * {
+  display: inline-block !important;
 }
 
 .trip {
