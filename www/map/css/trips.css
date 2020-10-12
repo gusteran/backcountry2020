@@ -72,3 +72,32 @@ map {
   float: right;
   font-size: 14px;
 }
+
+
+.esriPopup.myTheme .titlePane, .dj_ie7 .esriPopup.myTheme .titlePane .title {
+  /* background-color:#899752; */
+  background-color: firebrick !important;
+  color:#333;
+  font-weight:700;
+}
+
+.esriPopup.myTheme .titlePane {
+  border-bottom:1px solid #121310;
+}
+
+.esriPopup.myTheme a {
+  color:#d6e68a;
+}
+
+/* .esriPopup.myTheme
+.titleButton,.esriPopup.myTheme .pointer,.esriPopup.myTheme .esriViewPopup .gallery
+.mediaHandle,.esriPopup.myTheme .esriViewPopup .gallery .mediaIcon {
+  background-image:url(../images/popup_sprite.png);
+} */
+
+.esriPopup.myTheme .contentPane,
+.esriPopup.myTheme .actionsPane {
+  background-color:#424242;
+  color:#fff;
+  border-color:0 solid #121310;
+}

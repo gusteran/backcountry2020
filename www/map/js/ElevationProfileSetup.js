@@ -162,6 +162,9 @@ define([
       union = !union;
       console.log("Union is "+union);
       this.emit("toggle-union");
+      if(union){
+        console.log(this.map.infoWindow);
+      }
     }
   });
 });

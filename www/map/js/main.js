@@ -720,6 +720,10 @@ define([
         "opacity": bgOpacity
       });
 
+      
+
+      domClass.add(this.map.infoWindow.domNode, "myTheme");
+
     },
 
     _togglePanel: function (chartNode) {
