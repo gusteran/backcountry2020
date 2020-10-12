@@ -534,6 +534,7 @@ that appear below the zoom slider */
 #instructionsContainer {
   background-color: #424242 !important;
   opacity: 0.95 !important;
+  /* height: 500px; */
 }
 
 .esriBasemapGallery {
@@ -547,7 +548,7 @@ that appear below the zoom slider */
   overflow: auto;
   height: auto;
   width: 240px;
-  max-height: 300px;
+  /* max-height: 300px; */
   padding: 1em;
 }
 
