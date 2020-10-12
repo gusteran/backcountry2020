@@ -1,4 +1,5 @@
-const DATABASE_LINK = 'http://localhost:3000/users';
+const USER_DATABASE_LINK = 'http://localhost:3000/users';
+const TRIP_DATABASE_LINK = 'http://localhost:3000/trips';
 
 define([
   "dojo/_base/declare",
@@ -52,7 +53,7 @@ define([
       }
       this.tripElements = [];
       this.tripElements.push(dom.byId("model-trip"));
-      this.newTripStack = [5, 4, 3, 2, 1];
+      this.newTripStack = [5, 4, 3, 2,1];
 
       on(dom.byId("model-trip"), "click", lang.hitch(this, function (){
         console.log("Northern Circle, ya clicked it");
@@ -76,8 +77,13 @@ define([
       console.log("Setup Trip Widget");
 
       require(["dojo/store/JsonRest"], lang.hitch(this, function (JsonRest){
-        this.testJsonRest(JsonRest);
+        // this.testJsonRest(JsonRest);
+        this.JsonRest = JsonRest
+        this.setupUser(JsonRest);
+        this.setupTripStore(JsonRest);
       }));
+      
+
 
 
       // this.selGraphicsLayer = new GraphicsLayer();
@@ -102,45 +108,130 @@ define([
       this.union = !this.union;
       console.log(this.union);
     },
-    testJsonRest: function (JsonRest) {
-      this.store = new JsonRest({target: DATABASE_LINK});
-      this.store.put({
-        name: "TestName",
-        likedTrips: "Test",
-        trips: "Test"
+    setupUser: function (JsonRest) {
+      this.userStore = new JsonRest({target: USER_DATABASE_LINK});
+      if(localStorage.getItem("userId") != null && localStorage.getItem("userId") != "null" ){
+        this.userId = JSON.parse(localStorage.getItem("userId"));
+        console.log("User: "+this.userId);
+        this.userStore.get(this.userId).then((res) => {
+          this.userName = res.Name;
+        }).catch((err) => {
+          _createUser();
+        });
+      } else {
+        _createUser();
+      }
+      this.loadTrips();
+    },
+    _createUser :function () {
+      this.userStore.put({
+        name: ""
+      }).then((data) => {
+        console.log(data);
+        this.userId = data.id;
+        localStorage.setItem("userId", JSON.stringify(this.userId));
       });
-      // fetch(DATABASE_LINK)
-      // .then(data => console.log(data));
+    },
+    setupTripStore: function (JsonRest) {
+      this.tripStore = new JsonRest({target: TRIP_DATABASE_LINK});
+    },
+    loadTrips: function (){
+        for(tripId = 1; tripId < 6; tripId++){
+          console.log("Query: "+TRIP_DATABASE_LINK+"/"+tripId+"/"+this.userId);
+          fetch(TRIP_DATABASE_LINK+"/"+tripId+"/"+this.userId)
+          .then(response => response.json()).then((res)=>{
+            console.log(res);
+            let newTrip = {
+              author: res.UserID,
+              tripId: res.TripID,
+              geometry: esri.geometry.fromJson(JSON.parse(res.Geometry)),
+              trails: res.TrailList,
+              isPublished: res.IsPublished,
+              popularity: res.Popularity
+            };
+
+            console.log("Create a trip of id:"+newTrip.tripId);
+            this.newTripStack.splice(this.newTripStack.indexOf(newTrip.tripId),1);
+
+            // this.newTripStack.remove(newTrip.tripId);
+            console.log(this.newTripStack);
+
+            this.trips[newTrip.tripId] = newTrip;
+            // this.tripElements.push(dom.byId(""+newTrip.id));
+      
+            let tripElement = dom.byId(""+newTrip.tripId);
+            dom.byId("trip-"+newTrip.tripId).classList.remove("hide");
+            on(tripElement, "click", lang.hitch(this, function (){
+              console.log("Click on trip of id: "+newTrip.tripId);
+              this.elevationWidget.clearProfileChart();
+              this.elevationWidget.generateProfileNoUnion(newTrip.geometry);
+            }));
+      
+            let deleteBtn = dom.byId("delete-"+newTrip.tripId);
+            on(deleteBtn, "click", lang.hitch(this, function (){
+              if(this.newTripStack.length < 1){
+                dom.byId("createTripBtn").classList.remove("hide");
+              }
+      
+              dom.byId("trip-"+newTrip.tripId).classList.add("hide");
+              this.newTripStack.push(newTrip.tripId);
+      
+              this.tripStore.remove(newTrip.tripId).then((res) =>{
+                console.log("Delete trip "+newTrip.tripId);
+              })
+            }));
+            
+      
+            console.log(this.trips);
+      
+            if(this.trips.length > 5 && this.newTripStack.length < 1){
+              dom.byId("createTripBtn").classList.add("hide");
+              console.log("Hide create trip");
+            }
+      
+            console.log(newTrip);
+
+          }).catch((err)=>{
+
+          });
+        }
+        console.log(this.trips);
     },
     _createTrip: function () {
       let newTrip = {
-        author: this.user.id,
-        id: this.newTripStack.pop(),
-        geometry: this.elevationWidget.geometry
+        author: this.userId,
+        tripId: this.newTripStack.pop(),
+        geometry: this.elevationWidget.geometry,
+        trails: "",
+        isPublished: false,
+        popularity: 0
       };
 
-      console.log("Create a trip of id:"+newTrip.id);
+      console.log("Create a trip of id:"+newTrip.tripId);
 
-      this.trips[newTrip.id] = newTrip;
+      this.trips[newTrip.tripId] = newTrip;
       // this.tripElements.push(dom.byId(""+newTrip.id));
 
-      let tripElement = dom.byId(""+newTrip.id);
-      dom.byId("trip-"+newTrip.id).classList.remove("hide");
+      let tripElement = dom.byId(""+newTrip.tripId);
+      dom.byId("trip-"+newTrip.tripId).classList.remove("hide");
       on(tripElement, "click", lang.hitch(this, function (){
-        console.log("Click on trip of id: "+newTrip.id);
+        console.log("Click on trip of id: "+newTrip.tripId);
         this.elevationWidget.clearProfileChart();
         this.elevationWidget.generateProfileNoUnion(newTrip.geometry);
       }));
 
-      let deleteBtn = dom.byId("delete-"+newTrip.id);
+      let deleteBtn = dom.byId("delete-"+newTrip.tripId);
       on(deleteBtn, "click", lang.hitch(this, function (){
         if(this.newTripStack.length < 1){
           dom.byId("createTripBtn").classList.remove("hide");
         }
 
-        console.log("Delete trip "+newTrip.id);
-        dom.byId("trip-"+newTrip.id).classList.add("hide");
-        this.newTripStack.push(newTrip.id);
+        dom.byId("trip-"+newTrip.tripId).classList.add("hide");
+        this.newTripStack.push(newTrip.tripId);
+
+        this.tripStore.remove(newTrip.tripId).then((res) =>{
+          console.log("Delete trip "+newTrip.tripId);
+        })
       }));
       
 
@@ -151,6 +242,12 @@ define([
         dom.byId("createTripBtn").classList.add("hide");
         console.log("Hide create trip");
       }
+
+      console.log(newTrip);
+
+      this.tripStore.put(newTrip).then((res) => {
+        console.log(res);
+      });
 
     }
   });

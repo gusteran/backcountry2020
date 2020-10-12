@@ -1,27 +1,28 @@
 const sql = require("./db.js");
+const zlib = require('zlib')
 // const Day = require("./day.model.js");
 
 // constructor
 const Trip = function(trip) {
-  // let days = [];
-  // trip.segments.forEach((day)=>{
-  //   days.push(new Day({
-  //     trip: trip.id,
-  //     trails: day.trails,
-  //     campsite: day.campsite
-  //   }));
-  // });
-
-  this.user = trip.user;
-  this.id = trip.id;
-  this.segments = trip.segments;
-  this.review = trip.review;
-  this.isPublished = trip.isPublished;
-  this.popularity = trip.popularity;
+  this.TripID = trip.tripId,
+  this.UserID = trip.author,
+  this.TrailList = trip.trails,
+  this.Geometry = JSON.stringify(trip.geometry),
+  // zlib.deflate(JSON.stringify(trip.geometry), (err, buffer) => {
+  //   if (err) {
+  //     console.log('u-oh')
+  //   }
+  
+  //   // Send buffer as string to client using my imaginary io object
+  //   io.send(buffer.toString('base64'))
+  // }),
+  this.IsPublished = trip.isPublished,
+  this.Popularity = trip.popularity
 };
 
 Trip.create = (newTrip, result) => {
-  sql.query("INSERT INTO Trips SET ?", newTrip, (err, res) => {
+  console.log(newTrip);
+  sql.query("REPLACE INTO Trips SET ? ", newTrip, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -33,8 +34,8 @@ Trip.create = (newTrip, result) => {
   });
 };
 
-Trip.findById = (tripId, result) => {
-  sql.query(`SELECT * FROM Trips WHERE TripID = ${tripId}`, (err, res) => {
+Trip.findById = (tripId, userId, result) => {
+  sql.query(`SELECT * FROM Trips WHERE TripID = ${tripId} AND UserID = ${userId}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -65,10 +66,11 @@ Trip.getAll = result => {
   });
 };
 
-Trip.updateById = (id, user, result) => {
+Trip.updateById = (id, trip, result) => {
+  console.log(trip);
   sql.query(
-    "UPDATE Trips SET Name = ? WHERE TripID = ?",
-    [user.name, id],
+    "UPDATE Trips SET UserID = ?, TrailList = ?, Geometry = ?, IsPublished = ?, Popularity = ? WHERE TripID = ?",
+    [trip.UserID, trip.TrailList, trip.Geometry, trip.IsPublished, trip.Popularity, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -82,8 +84,8 @@ Trip.updateById = (id, user, result) => {
         return;
       }
 
-      console.log("updated user: ", { id: id, ...user });
-      result(null, { id: id, ...user });
+      console.log("updated trip: ", { id: id, ...trip });
+      result(null, { id: id, ...trip });
     }
   );
 };
@@ -102,7 +104,7 @@ Trip.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted user with id: ", id);
+    console.log("deleted trip with id: ", id);
     result(null, res);
   });
 };
@@ -115,7 +117,7 @@ Trip.removeAll = result => {
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} users`);
+    console.log(`deleted ${res.affectedRows} trips`);
     result(null, res);
   });
 };

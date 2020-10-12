@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 // });
 
 require("./app/routes/user.routes.js")(app);
+require("./app/routes/trip.routes.js")(app);
 
 // const mysql = require("mysql");
 // const dbConfig = require("./app/config/db.config.js");

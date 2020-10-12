@@ -91,8 +91,8 @@ define([
       this.union = temp;
     },
     generateProfile: function (geometry) {
-      console.log(union);
-      console.log(currentGeometry);
+      console.log("Union"+ union);
+      console.log(geometry);
       if(union && currentGeometry){
         geometry = geometryEngine.union(geometry, currentGeometry);
       }
@@ -103,6 +103,7 @@ define([
         try {
           this.profileWidget.set("profileGeometry", profileLine);
         } catch (error) {
+          console.error(error);
           var message = "Unable to generate elevation profile. Service may be invalid or down.";
           alert(message);
         }
