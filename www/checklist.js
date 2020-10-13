@@ -1,5 +1,4 @@
 const checklistDataIDs = [
-  "checkPlanning",
   "checkRules",
   "checkPlanning",
   "checkApplyForPermit",
@@ -12,7 +11,8 @@ const checklistDataIDs = [
   "checkStatistics",
   "checkGNPUpdates",
   "checkHikeSafe",
-  "checkMultiplePlans"
+  "checkMultiplePlans",
+  "checkSteps"
 ];
 
 function updateChecklist() {
@@ -44,7 +44,7 @@ function setFalse(name) {
   localStorage.setItem(name, "false");
 }
 
-const steps = [1, 2, 4, 5]
+const steps = [1, 2, 3, 4, 5, 6, 7]
 
 function setupStepToggles (){
   steps.forEach( (stepNum) => {

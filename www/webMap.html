@@ -16,22 +16,24 @@
 <!--Header and Navigation Bar-->
 <header>
   <nav>
-      <a href="index.html"><img src="resources/glacier_logo.png" /></a>
-      <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="planning.html">Plan Your Trip</a></li>
-          <li><a href="preparation.html">Permit Prep</a></li>
-          <li><a href="safety.html">Safety Tips</a></li>
-          <li><a href="webMap.html">Interactive Map</a></li>
-          <li><a href="about_us.html">About Us</a></li>
-      </ul>
-  </nav>
-  <h1>Glacier Backcountry Trip Planning</h1>
+    <a href="index.html"><img src="resources/glacier_logo.png" /></a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="planning.html">Plan Your Trip</a></li>
+        <li><a href="preparation.html">Permit Prep</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="webMap.html">Interactive Map</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+    </ul>
+</nav>
+    <h1>Glacier Backcountry Trip Planning</h1>
+    <button type="button" onclick="minimizeHeader()">-
+    </button>
 </header>
 
 <!--Body and Page Content-->
 
-<body onload="setTrue('mapOpened');">
+<body onload="setTrue('checkMapOpened');">
   <div class="mini_header" id="temp_header">
     <button type="button" onclick="minimizeHeader()">-
     </button>
