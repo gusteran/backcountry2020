@@ -23,6 +23,11 @@ body {
     border: 0px;
 }
 
+.git_img{
+    height: 400px;
+    width: 600px;
+}
+
 /* --Header-- */
 header{
     display: block;
@@ -426,6 +431,11 @@ nav li:hover{
     font-size: 32px;
     color:#404E5A;
     margin: 0px;
+}
+
+.about_box {
+text-align: left;
+float: left;
 }
 /* -------------------- */
 
