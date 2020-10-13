@@ -1,5 +1,5 @@
-const USER_DATABASE_LINK = 'https://dev.gusteran.com:3000/users';
-const TRIP_DATABASE_LINK = 'https://dev.gusteran.com:3000/trips';
+const USER_DATABASE_LINK = 'https://backcountry2020.wpi.edu:3000/users';
+const TRIP_DATABASE_LINK = 'https://backcountry2020.wpi.edu:3000/trips';
 
 define([
   "dojo/_base/declare",
@@ -131,7 +131,7 @@ define([
       } else {
         this._createUser();
       }
-      this.loadTrips();
+      // this.loadTrips();
     },
     setupTripStore: function (JsonRest) {
       this.tripStore = new JsonRest({target: TRIP_DATABASE_LINK});
