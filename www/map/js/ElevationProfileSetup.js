@@ -77,25 +77,33 @@ define([
       on(this.map.infoWindow, "selection-change", lang.hitch(this, function () {
         var sel = this.map.infoWindow.getSelectedFeature();
         if (sel && sel.geometry && sel.geometry.type === "polyline") {
+          console.log(sel);
           this.generateProfile(sel.geometry);
         } else {
           this.clearProfileChart();
         }
       }));
     },
-
+    generateProfileNoUnion: function (geometry){
+      let temp = this.union;
+      this.union = false;
+      this.generateProfile(geometry);
+      this.union = temp;
+    },
     generateProfile: function (geometry) {
-      console.log(union);
-      console.log(currentGeometry);
+      console.log("Union"+ union);
+      console.log(geometry);
       if(union && currentGeometry){
         geometry = geometryEngine.union(geometry, currentGeometry);
       }
       currentGeometry = geometry;
+      this.geometry = geometry;
       var profileLine = geometry;
       if (profileLine) {
         try {
           this.profileWidget.set("profileGeometry", profileLine);
         } catch (error) {
+          console.error(error);
           var message = "Unable to generate elevation profile. Service may be invalid or down.";
           alert(message);
         }
@@ -154,6 +162,10 @@ define([
     toggleUnion: function () {
       union = !union;
       console.log("Union is "+union);
+      this.emit("toggle-union");
+      if(union){
+        console.log(this.map.infoWindow);
+      }
     }
   });
 });

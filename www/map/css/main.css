@@ -166,11 +166,11 @@ g#mapDiv_graphics_layer path {
 }
 
 .icon-instructions:before {
-  content: "<I>"
+  content: "Info"
 }
 
 .icon-close:before {
-  content: "\e600";
+  content: "X";
 }
 
 .icon-draw:before {
@@ -531,6 +531,12 @@ that appear below the zoom slider */
   z-index: 30;
 }
 
+#instructionsContainer {
+  background-color: #424242 !important;
+  opacity: 0.95 !important;
+  /* height: 500px; */
+}
+
 .esriBasemapGallery {
   padding: 10px;
 }
@@ -542,7 +548,7 @@ that appear below the zoom slider */
   overflow: auto;
   height: auto;
   width: 240px;
-  max-height: 300px;
+  /* max-height: 300px; */
   padding: 1em;
 }
 
