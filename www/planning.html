@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>GNP Backcountry Planning</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link rel="shortcut icon" href="resources/glacier_logo.ico">
+    <title>Glacier Backcountry Planning</title>
     <link rel="stylesheet" href="styles.css">
     <script src="checklist.js"></script>
 </head>
@@ -25,15 +27,15 @@
 
 <!--Body and Content-->
 
-<body onload="setupStepToggles();">
+<body onload="setupStepToggles();setTrue('checkSteps');">
     <div class="content">
         <div class="prep_title">
             <h1>Plan Your Trip To Glacier</h1>
         </div>
         <div class="text_box">
-            <div class="step_header">
+            <div id="step1-header" class="step_header">
                 <div id="step1-arrow" class="arrow_right"></div>
-                <h3 id="step1-header">Step 1</h3>
+                <h3 >Step 1 - When</h3>
             </div>
             <p>When do you want to go to Glacier? You may already have a date/time in mind, but if not check out the
                 information on different seasons.</p>
@@ -45,7 +47,7 @@
                     <div>
                         <h4>May 1- June 30</h4>
                         <p>Campsites open up as early as June 15th</p>
-                        <p>Belly River and North Fork region may be available earper</p>
+                        <p>Belly River and North Fork region may be available earlier</p>
                         <p>Seasonal Bridges start to go up in late May</p>
                         <p>Trails are often muddy or may have running water</p>
                         <p>Snow conditions will change daily</p>
@@ -90,19 +92,19 @@
                         <p>Winter season. Be prepared for sub-zero temperatures and constant snow and ice.
                             Stay alert of avalanche warnings.</p>
                         <p>More info on winter backpacking can be found
-                            <a href="https://www.nps.gov/glac/planyourvisit/crosscountryskiing.htm">here</a>.</p>
+                            <a target="_blank" href="https://www.nps.gov/glac/planyourvisit/crosscountryskiing.htm">here</a>.</p>
                     </div>
                 </div>
-            </div>
-            <div>
-                <img src="resources/glacier_temperatures.png">
-                <p>Image Source: <a href="https://glacier.org/plan-your-hiking-trip/">Glacier.org</a></p>
+                <div class="full_card">
+                    <img style="transform: translateX(20px); border: solid black 1px; border-radius: 20px; height: 400px;margin: 0px;" src="resources/glacier_temperatures.png">
+                    <p style="transform: translateX(20px); text-align: center;width: 540px;">Image Source: <a target="_blank" href="https://glacier.org/plan-your-hiking-trip/">Glacier.org</a></p>
+                </div>
             </div>
         </div>
         <div class="text_box">
-            <div class="step_header">
+            <div id="step2-header" class="step_header">
                 <div id="step2-arrow" class="arrow_right"></div>
-                <h3 id="step2-header">Step 2</h3>
+                <h3>Step 2 - Where</h3>
             </div>
             <p>Where in the park do you want to go? The park can be roughly divided into an east and west side
                 by the Continental Divide. Trails on the east side of the park typically start at an elevation
@@ -110,26 +112,30 @@
                 Western trails typically start around 3200 ft and feature more forests and fewer people. </p>
             <div id="step2">
                 <img src="resources/Map-of-Glacier-National-Park.png">
-                <p>Image Source: <a
+                <p>Image Source: <a target="_blank"
                         href="https://www.researchgate.net/figure/Map-of-Glacier-National-Park-and-surrounding-areas-with-location-of-study-sites-Lee_fig1_251694712">Research
                         Gate</a></p>
                 <p>
                     You can find all the campsites and information about them
-                    <a href="https://www.nps.gov/glac/planyourvisit/upload/2020-map-for-web.pdf">here</a>
+                    <a target="_blank" href="https://www.nps.gov/glac/planyourvisit/upload/2020-map-for-web.pdf">here</a>
                     , and use an
-                    <a href="webMap.html">interactive map</a>
+                    <a target="_blank" href="webMap.html">interactive map</a>
                     to help plan.
                 </p>
             </div>
-            <h3>Step 3</h3>
+            <div id="step3-header" class="step_header">
+                <div id="step3-arrow" class="arrow_right"></div>
+                <h3>Step 3 - Park Updates</h3>
+            </div>
             <p>
                 Check out the park’s
-                <a href="https://www.nps.gov/glac/planyourvisit/conditions.htm">alerts page</a>
+                <a target="_blank" href="https://www.nps.gov/glac/planyourvisit/conditions.htm">alerts page</a>
                 for any long term issues that might affect your trip.
             </p>
-            <div class="step_header">
+            <br id="step3">
+            <div id="step4-header" class="step_header">
                 <div id="step4-arrow" class="arrow_right"></div>
-                <h3 id="step4-header">Step 4</h3>
+                <h3>Step 4 - Specific Restrictions</h3>
             </div>
             <p>Some activities have special considerations. Check this list to see if your trip falls into any of
                 these categories.</p>
@@ -138,7 +144,9 @@
                 <p>Undesignated camping is available here, but advance permits are not allowed for undesignated camping.
                 </p>
                 <h4>River Camping:</h4>
-                <p>Overnight river trips require a special permit, details here, and advanced permits are not allowed.
+                <p>Overnight river trips require a special permit, details 
+                    <a target="_blank" href="https://www.nps.gov/glac/planyourvisit/river-camping.htm">here</a>
+                    , and advanced permits are not allowed.
                 </p>
                 <h4>Entering Via Continental Divide Trail:</h4>
                 <p>Hikers entering the park through this trail should call the backcountry office at (406) 888-7857
@@ -147,9 +155,9 @@
                 <p>A special permit is required for any activities on the Blackfeet reservation. For more information
                     call this number (406) 338-7207.</p>
             </div>
-            <div class="step_header">
+            <div id="step5-header" class="step_header">
                 <div id="step5-arrow" class="arrow_right"></div>
-                <h3 id="step5-header">Step 5</h3>
+                <h3>Step 5 - Gear</h3>
             </div>
             <p>Make sure you can get the recommended gear for hiking in Glacier. You should have: </p>
             <div id="step5" style="margin: -20px" class="card_holder">
@@ -180,15 +188,23 @@
                     </ul>
                 </div>
             </div>
-            <h3>Step 6</h3>
+            <div id="step6-header" class="step_header">
+                <div id="step6-arrow" class="arrow_right"></div>
+                <h3>Step 6 - Alternate Routes</h3>
+            </div>
             <p>Plan alternate routes. Only about one half to two thirds of visitors who apply for
                 backpacking permits get their first choice for trips. You can submit up to 3 additional
                 routes on your application, so plan some possible alternative routes.
             </p>
-            <h3>Step 7</h3>
+            <br id="step6">
+            <div id="step7-header" class="step_header">
+                <div id="step7-arrow" class="arrow_right"></div>
+                <h3>Step 7 - Permitting</h3>
+            </div>
             <p>Head on over to the
-                <a href="https://backcountry2020.wpi.edu/preparation.html">permit page</a>
+                <a target="_blank" href="https://backcountry2020.wpi.edu/preparation.html">permit page</a>
                 to learn how to apply for an advance permit or a walk in permit at the park.</p>
+                <br id="step7">
         </div>
     </div>
 </body>
