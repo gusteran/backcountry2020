@@ -2,8 +2,11 @@
 <html>
 
 <head>
-    <title>GNP Backcountry Planning</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link rel="shortcut icon" href="resources/glacier_logo.ico">
+    <title>Glacier Backcountry Planning</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="checklist.js"></script>
 </head>
 
 <!--Header and Navigation Bar-->
@@ -24,7 +27,7 @@
 
 <!--Body and Page Content-->
 
-<body>
+<body onload="setTrue('checkRules');">
     <div class="content">
         <div class="prep_title">
             <h1>Permitting Rules and Regulations</h1>
@@ -64,9 +67,15 @@
                         Hiking short road sections on foot to connect longer itineraries is permitted
                     </li>
                     <li>
-                        There are 6 permit locations: Apgar Backcountry Permit Center, St. Mary Visitor Center, Many
-                        Glacier Ranger Station, Two Medicine Ranger Station, Polebridge Ranger Station, Waterton Lakes
-                        National Park Visitor Reception Centre
+                        There are 6 permit locations: 
+                        <ul>
+                            <li>Apgar Backcountry Permit Center</li>
+                            <li>St. Mary Visitor Center</li>
+                            <li>Many Glacier Ranger Station</li>
+                            <li>Two Medicine Ranger Station</li>
+                            <li>Polebridge Ranger Station</li>
+                            <li>Waterton Lakes National Park Visitor Reception Centre</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -75,7 +84,7 @@
                 <div class="image_card">
                     <img src="resources/paygov.png">
                     <h3>Advanced Permit</h3>
-                    <ul>
+                    <ul style="text-align: left;">
                         <li>About half of each campsite is reservable in advance</li>
                         <li>Advance registrations can only be submitted online</li>
                         <li>Available starting March 15th for groups of 1-8 campers</li>
@@ -85,9 +94,9 @@
                     </ul>
                 </div>
                 <div class="image_card">
-                    <img src="resources/permit.png">
+                    <img src="resources/apgar_permit.jpg">
                     <h3>Walk in Permit</h3>
-                    <ul>
+                    <ul style="text-align: left;">
                         <li>Arrive early before your intended trip start date</li>
                         <li>Only fee is the $7 per night</li>
                         <li>Can not line up until 4:00am, and will not be issued after 4:30pm at any location </li>
