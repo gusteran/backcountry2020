@@ -1,5 +1,5 @@
-const USER_DATABASE_LINK = 'http://localhost:3000/users';
-const TRIP_DATABASE_LINK = 'http://localhost:3000/trips';
+const USER_DATABASE_LINK = 'https://dev.gusteran.com:3000/users';
+const TRIP_DATABASE_LINK = 'https://dev.gusteran.com:3000/trips';
 
 define([
   "dojo/_base/declare",
@@ -109,21 +109,6 @@ define([
       this.union = !this.union;
       console.log(this.union);
     },
-    setupUser: function (JsonRest) {
-      this.userStore = new JsonRest({target: USER_DATABASE_LINK});
-      if(localStorage.getItem("userId") != null && localStorage.getItem("userId") != "null" ){
-        this.userId = JSON.parse(localStorage.getItem("userId"));
-        console.log("User: "+this.userId);
-        this.userStore.get(this.userId).then((res) => {
-          this.userName = res.Name;
-        }).catch((err) => {
-          _createUser();
-        });
-      } else {
-        _createUser();
-      }
-      this.loadTrips();
-    },
     _createUser :function () {
       this.userStore.put({
         name: ""
@@ -132,6 +117,21 @@ define([
         this.userId = data.id;
         localStorage.setItem("userId", JSON.stringify(this.userId));
       });
+    },
+    setupUser: function (JsonRest) {
+      this.userStore = new JsonRest({target: USER_DATABASE_LINK});
+      if(localStorage.getItem("userId") != null && localStorage.getItem("userId") != "null" ){
+        this.userId = JSON.parse(localStorage.getItem("userId"));
+        console.log("User: "+this.userId);
+        this.userStore.get(this.userId).then((res) => {
+          this.userName = res.Name;
+        }).catch((err) => {
+          this._createUser();
+        });
+      } else {
+        this._createUser();
+      }
+      this.loadTrips();
     },
     setupTripStore: function (JsonRest) {
       this.tripStore = new JsonRest({target: TRIP_DATABASE_LINK});
@@ -224,7 +224,7 @@ define([
             console.log(newTrip);
 
           }).catch((err)=>{
-
+            console.error(err);
           });
         }
         console.log(this.trips);

@@ -2,8 +2,19 @@ const express = require("express");
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const app = express();
+const path = require("path");
 
 const port = 3000;
+
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var keyPath = path.resolve(__dirname, './sslcert/private-key.pem');
+var privateKey  = fs.readFileSync(keyPath, 'utf8');
+var certPath = path.resolve(__dirname, './sslcert/public-cert.pem');
+var certificate = fs.readFileSync(certPath, 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
 
 app.use(cors());
 
@@ -24,24 +35,11 @@ app.get('/', (req, res) => {
 require("./app/routes/user.routes.js")(app);
 require("./app/routes/trip.routes.js")(app);
 
-// const mysql = require("mysql");
-// const dbConfig = require("./app/config/db.config.js");
 
-// const connection = mysql.createConnection({
-//     host: dbConfig.HOST,
-//     port: dbConfig.PORT,
-//     user: dbConfig.USER,
-//     password: dbConfig.PASSWORD,
-//     socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
-//   });
+// your express configuration here
 
-// app.get('/createdb', (req, res) => {
-//     let sql = 'CREATE DATABASE tripdata';
-//     connection.query(sql, (err, result) => {
-//         if(err) throw err;
-//         console.log(result);
-//         res.send("Database created");
-//     })
-// });
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
-app.listen(port, () => console.log('Starting server on port '+port));
+// httpServer.listen(port, () => console.log('Starting server on port '+port));
+httpsServer.listen(port, () => console.log('Starting SSL server on port '+port));

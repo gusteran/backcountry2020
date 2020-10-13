@@ -24,7 +24,7 @@ define({
   "share": false,
   "mapTitle": "Glacier National Park Interactive Trailmap",
   "mapDesc": "This the map for the GNP backcountry hiking team. The initial basemap and layers were provided by Richard Menicke.",
-  "webmap": "71696700c04647d69ad47ff418cd886e",
+  "webmap": "e948590c5d98400eb7a350f94903d218",
   "oauthappid": null, //"AFTKRmv16wj14N3z",
   //Group templates must support a group url parameter. This will contain the id of the group.
   "group": "",
