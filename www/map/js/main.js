@@ -44,6 +44,7 @@ define([
 
   "application/MapUrlParams",
   "application/ElevationProfileSetup",
+  "application/TripWidget",
 
   "dojo/domReady!"
 ], function (
@@ -58,7 +59,8 @@ define([
   arcgisUtils,
   esriLang,
   MapUrlParams,
-  ElevationProfileSetup
+  ElevationProfileSetup,
+  TripWidget
 ) {
   return declare(null, {
     config: {},
@@ -668,6 +670,13 @@ define([
         }));
       }));
 
+      this.tripWidget = new TripWidget(params);
+      this.tripWidget.elevationWidget = this.elevationWidget;
+      on(this.elevationWidget, "toggle-union", lang.hitch(this, function(){
+        this.tripWidget.toggleUnion();
+      }));
+      this.tripWidget.setup();
+
     },
     _updateTheme: function () {
       var bgColor = this.config.background;
@@ -710,6 +719,10 @@ define([
         "border-color": bgColor,
         "opacity": bgOpacity
       });
+
+      
+
+      domClass.add(this.map.infoWindow.domNode, "myTheme");
 
     },
 

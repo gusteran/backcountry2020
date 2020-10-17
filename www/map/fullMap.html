@@ -15,77 +15,134 @@
   <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/css/esri.css">
   <!-- Load any application specific styles -->
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/trips.css">
 </head>
 
 <body class="claro app-loading">
+
+  <sidenav>
+    <button style="margin-bottom: 20px;" id="whoseTrips">Show Published Trips</button>
+    <div id="tripContainer">
+      <div class="trip hide">
+          <p id="model-trip">Northern Circle</p>
+      </div>
+        <div id="trip-1" class="trip hide">
+          <p id="1">New Trip 1</p>
+          <a id="delete-1" >Delete</a>
+          <a id="update-1" style="display: none;">Update Content</a>
+          <a id="publish-1" style="display: none;float: left;">Publish</a>
+        </div>
+        <div id="trip-2" class="trip hide">
+          <p id="2">New Trip 2</p>
+          <a id="delete-2" href="#">Delete</a>
+          <a id="update-2" style="display: none;">Update Content</a>
+          <a id="publish-2" style="display: none;float: left;">Publish</a>
+        </div>
+        <div id="trip-3" class="trip hide">
+          <p id="3">New Trip 3</p>
+          <a id="delete-3" href="#">Delete</a>
+          <a id="update-3" style="display: none;">Update Content</a>
+          <a id="publish-3" style="display: none;float: left;">Publish</a>
+        </div>
+        <div id="trip-4" class="trip hide">
+          <p id="4">New Trip 4</p>
+          <a id="delete-4" href="#">Delete</a>
+          <a id="update-4" style="display: none;">Update Content</a>
+          <a id="publish-4" style="display: none;float: left;">Publish</a>
+        </div>
+        <div id="trip-5" class="trip hide">
+          <p id="5">New Trip 5</p>
+          <a id="delete-5" href="#">Delete</a>
+          <a id="update-5" style="display: none;">Update Content</a>
+          <a id="publish-5" style="display: none;float: left;">Publish</a>
+        </div>
+    </div>
+    <button id="createTripBtn">Create a trip</button>
+    <p style="background-color: white;">Please bear with us as we migrate the database to our web server</p>
+  </sidenav>
+
+  <map>
+
   <!--Modal Splash Screen-->
-  <div id="modal" class="hide">
-    <div class="modal-content">
-      <div class="modal-header bg fg">
-        <h2 id="modalTitle"></h2>
+    <div id="modal" class="hide">
+      <div class="modal-content">
+        <div class="modal-header bg fg">
+          <h2 id="modalTitle"></h2>
+        </div>
+        <div class="copy bg fg">
+          <div id="modalContent"></div>
+          <center>
+            <input id="closeOverlay" class="bg fg" type="button" />
+          </center>
+        </div>
       </div>
-      <div class="copy bg fg">
-        <div id="modalContent"></div>
-        <center>
-          <input id="closeOverlay" class="bg fg" type="button" />
-        </center>
+      <div class="overlay"></div>
+    </div>
+    <div id="basemapContainer" class="bg fg arrow_box">
+      <div class="dialog-header">
+        <div class="icon-close closeBtn" tabindex="0"></div>
+      </div>
+      <div id="basemapDiv" class="arrow_content"></div>
+    </div>
+    <div id="legendContainer" class="bg fg arrow_box">
+      <div class="dialog-header">
+        <div class="icon-close closeBtn" tabindex="0"></div>
+      </div>
+      <div id="legendDiv" class="bg fg arrow_content"></div>
+    </div>
+    <div id="shareContainer" class="bg fg arrow_box">
+      <div class="dialog-header">
+        <div class="icon-close closeBtn" tabindex="0"></div>
+      </div>
+      <div id="shareDiv" class="arrow_content"></div>
+    </div>
+    <div id="instructionsContainer" class="bg fg arrow_box">
+      <div class="dialog-header">
+        <div class="icon-close closeBtn" tabindex="0"></div>
+      </div>
+      <div style="width: 400px;" id="instructionsDiv" class="arrow_content">
+        <h2>How to use</h2>
+        <ul>
+          <li>Select trails to see their elevation profile and statistics</li>
+          <li>Select campsites to see more information about them</li>
+          <li>Use the three buttons on the right hand side of the elevation profile overlay to:</li>
+          <ol>
+            <li>Turn on/off multi-track select mode</li>
+            <li>Draw your own track</li>
+            <li>Expand or reduce the elevation profile overlay</li>
+          </ol>
+          <li>When you have selected the tracks you like, you can save it as a trip by hitting the "Create a Trip" button</li>
+        </ul>
       </div>
     </div>
-    <div class="overlay"></div>
-  </div>
-  <div id="basemapContainer" class="bg fg arrow_box">
-    <div class="dialog-header">
-      <div class="icon-close closeBtn" tabindex="0"></div>
-    </div>
-    <div id="basemapDiv" class="arrow_content"></div>
-  </div>
-  <div id="legendContainer" class="bg fg arrow_box">
-    <div class="dialog-header">
-      <div class="icon-close closeBtn" tabindex="0"></div>
-    </div>
-    <div id="legendDiv" class="bg fg arrow_content"></div>
-  </div>
-  <div id="shareContainer" class="bg fg arrow_box">
-    <div class="dialog-header">
-      <div class="icon-close closeBtn" tabindex="0"></div>
-    </div>
-    <div id="shareDiv" class="arrow_content"></div>
-  </div>
-  <div id="instructionsContainer" class="bg fg arrow_box">
-    <div class="dialog-header">
-      <div class="icon-close closeBtn" tabindex="0"></div>
-    </div>
-    <div id="instructionsDiv" class="arrow_content">
-      <h2>Instructions</h2>
-    </div>
-  </div>
-  <!-- Elevation Profile Container-->
-  <div id="panelContainer" class="panel bg fg">
-    <div id="panelTitle">
-      <h1 id="elevTitle" class="fg"></h1>
-      <div id="elevTools" class="fg">
-        <button id="unionTool" class="tools icon-union fg"></button>
-        <button id="drawTool" class="hide tools icon-draw fg"></button>
-        <button id="toggleProfile" class="tools icon-profile fg"></button>
+    <!-- Elevation Profile Container-->
+    <div id="panelContainer" class="panel bg fg">
+      <div id="panelTitle">
+        <h1 id="elevTitle" class="fg"></h1>
+        <div id="elevTools" class="fg">
+          <button id="unionTool" class="tools icon-union fg"></button>
+          <button id="drawTool" class="hide tools icon-draw fg"></button>
+          <button id="toggleProfile" class="tools icon-profile fg"></button>
+        </div>
       </div>
+      <div id="desc"></div>
+      <div id="panelContent">
+        <div id="elevProfileChart"></div>
+      </div>
+      <div id="elevInfo"></div>
     </div>
-    <div id="desc"></div>
-    <div id="panelContent">
-      <div id="elevProfileChart"></div>
+    <div class="loading-indicator">
+      <div class="loading-message" id="loading_message"></div>
     </div>
-    <div id="elevInfo"></div>
-  </div>
-  <div class="loading-indicator">
-    <div class="loading-message" id="loading_message"></div>
-  </div>
-  <div id="mapDiv" dir="ltr"></div>
-  <div class="map-tools">
-    <button id="instructionsBtn" class="map-btn fg bg icon-instructions"></button>
-    <button id="legendBtn" class="map-btn fg bg icon-legend"></button>
-    <button id="basemapBtn" class="map-btn fg bg icon-basemap"></button>
-    <button id="shareBtn" class="map-btn fg bg icon-share"></button>
-  </div>
-  <div id="toggle" class="toggle"></div>
+    <div id="mapDiv" dir="ltr"></div>
+    <div class="map-tools">
+      <button id="instructionsBtn" class="map-btn fg bg icon-instructions"></button>
+      <button id="legendBtn" class="map-btn fg bg icon-legend"></button>
+      <button id="basemapBtn" class="map-btn fg bg icon-basemap"></button>
+      <button id="shareBtn" class="map-btn fg bg icon-share"></button>
+    </div>
+    <div id="toggle" class="toggle"></div>
+  </map>
   <script type="text/javascript">
     var webgl = location.search.match(/webgl=([\w-]+)/) ? (RegExp.$1).toLowerCase() === "false" ? 0 : 1 : 1;
     var package_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
